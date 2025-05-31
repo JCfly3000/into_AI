@@ -5,22 +5,25 @@ project:
 website:
   comments:
     giscus:
-      repo: JCfly3000/into_sql
+      repo: JCfly3000/into_AI
       input-position: "bottom"
       theme:
         light: light # giscus theme used for light website theme
         dark: dark_dimmed # giscus theme used for dark website theme
 
-  title: "SQL handbook"
-  favicon: "SQL-Database.png"
+  title: "AI handbook"
+  favicon: "Piktogramm-AI-100.jpg"
   navbar:
-    logo: "SQL-Database.png"
+    logo: "Piktogramm-AI-100.jpg"
     left:
       - href: index.qmd
         text: Home
-      - href: code.qmd
-        text: Code
-  
+      - href: ellmer.qmd
+        text: ellmer
+      - href: chatlas.qmd
+        text: chatlas
+      - href: chattr.qmd
+        text: chattr  
       
     right:
       - text: "中文"
