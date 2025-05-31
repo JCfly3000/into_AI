@@ -1,0 +1,15 @@
+---
+title: "AI handbook"
+---
+
+This is a Quarto website.
+
+
+# In to R
+
+# R model
+
+# In to Python
+
+# Pyhton model
+
