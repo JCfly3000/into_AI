@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="cn" xml:lang="cn">
 <head>
-<link rel="alternate" hreflang="en" href="/chattr.html" />
-<link rel="alternate" hreflang="cn" href="/cn/chattr.cn.html" />
+<link rel="alternate" hreflang="en" href="/LLM.html" />
+<link rel="alternate" hreflang="cn" href="/cn/LLM.cn.html" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-99.9.9">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>chattr: An RStudio/Positron Interface for LLMs – AI handbook</title>
+<title>人工智能基础概念 – AI手册</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,7 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
     <img src="./Piktogramm-AI-100.jpg" alt="" class="navbar-logo"></a>
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">AI handbook</span>
+    <span class="navbar-title">AI手册</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -109,14 +109,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item"><div class="dropdown" id="languages-links-parent">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> EN</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="/cn/chattr.html" id="language-link-cn">中文</a></li></ul>
+<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> 中文</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="/LLM.html" id="language-link-en">EN</a></li></ul>
 </div></li>
 <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./LLM.html"> 
+    <a class="nav-link active" href="./LLM.html" aria-current="page"> 
 <span class="menu-text">LLM</span></a>
   </li>  
   <li class="nav-item">
@@ -128,7 +128,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">chatlas</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./chattr.html" aria-current="page"> 
+    <a class="nav-link" href="./chattr.html"> 
 <span class="menu-text">chattr</span></a>
   </li>  
   <li class="nav-item">
@@ -158,45 +158,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#introduction-to-chattr" id="toc-introduction-to-chattr" class="nav-link active" data-scroll-target="#introduction-to-chattr"><span class="header-section-number">1</span> Introduction to chattr</a></li>
-  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation"><span class="header-section-number">2</span> Installation</a></li>
+<li><a href="#ai-%E6%99%BA%E8%83%BD%E4%BD%93" id="toc-ai-智能体" class="nav-link active" data-scroll-target="#ai-智能体"><span class="header-section-number">1</span> AI 智能体</a></li>
+  <li><a href="#%E6%A8%A1%E5%9E%8B-%E6%8E%A7%E5%88%B6%E5%99%A8-%E8%A7%A3%E6%9E%90%E5%99%A8mcp" id="toc-模型-控制器-解析器mcp" class="nav-link" data-scroll-target="#模型-控制器-解析器mcp"><span class="header-section-number">2</span> 模型-控制器-解析器（MCP）</a></li>
   <li>
-<a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started"><span class="header-section-number">3</span> Getting Started</a>
+<a href="#%E6%A3%80%E7%B4%A2%E5%A2%9E%E5%BC%BA%E7%94%9F%E6%88%90rag" id="toc-检索增强生成rag" class="nav-link" data-scroll-target="#检索增强生成rag"><span class="header-section-number">3</span> 检索增强生成（RAG）</a>
   <ul class="collapse">
-<li><a href="#load-the-package" id="toc-load-the-package" class="nav-link" data-scroll-target="#load-the-package"><span class="header-section-number">3.1</span> Load the Package</a></li>
-  <li><a href="#set-up-the-chat-provider" id="toc-set-up-the-chat-provider" class="nav-link" data-scroll-target="#set-up-the-chat-provider"><span class="header-section-number">3.2</span> Set Up the Chat Provider</a></li>
+<li><a href="#rag-%E7%9A%84%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86" id="toc-rag-的工作原理" class="nav-link" data-scroll-target="#rag-的工作原理"><span class="header-section-number">3.1</span> RAG 的工作原理</a></li>
+  <li><a href="#rag-%E7%9A%84%E4%BC%98%E5%8A%BF" id="toc-rag-的优势" class="nav-link" data-scroll-target="#rag-的优势"><span class="header-section-number">3.2</span> RAG 的优势</a></li>
+  <li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99" id="toc-参考资料" class="nav-link" data-scroll-target="#参考资料"><span class="header-section-number">3.3</span> 参考资料</a></li>
   </ul>
 </li>
-  <li>
-<a href="#interactive-usage" id="toc-interactive-usage" class="nav-link" data-scroll-target="#interactive-usage"><span class="header-section-number">4</span> Interactive Usage</a>
-  <ul class="collapse">
-<li><a href="#using-the-chattr-app" id="toc-using-the-chattr-app" class="nav-link" data-scroll-target="#using-the-chattr-app"><span class="header-section-number">4.1</span> Using the chattr App</a></li>
-  <li><a href="#interacting-directly-in-code" id="toc-interacting-directly-in-code" class="nav-link" data-scroll-target="#interacting-directly-in-code"><span class="header-section-number">4.2</span> Interacting Directly in Code</a></li>
-  </ul>
-</li>
-  <li>
-<a href="#history-management" id="toc-history-management" class="nav-link" data-scroll-target="#history-management"><span class="header-section-number">5</span> History Management</a>
-  <ul class="collapse">
-<li><a href="#view-history" id="toc-view-history" class="nav-link" data-scroll-target="#view-history"><span class="header-section-number">5.1</span> View History</a></li>
-  <li><a href="#save-history" id="toc-save-history" class="nav-link" data-scroll-target="#save-history"><span class="header-section-number">5.2</span> Save History</a></li>
-  <li><a href="#clear-history" id="toc-clear-history" class="nav-link" data-scroll-target="#clear-history"><span class="header-section-number">5.3</span> Clear History</a></li>
-  <li><a href="#reload-history" id="toc-reload-history" class="nav-link" data-scroll-target="#reload-history"><span class="header-section-number">5.4</span> Reload History</a></li>
-  </ul>
-</li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">6</span> Conclusion</a></li>
-  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">7</span> Reference</a></li>
   </ul></nav>
 </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <div class="quarto-title-block"><div>
-<h1 class="title">chattr: An RStudio/Positron Interface for LLMs</h1>
-<button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu">
-<li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li>
-<li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li>
-<li><hr class="dropdown-divider"></li>
-<li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li>
-</ul>
+<h1 class="title">人工智能基础概念</h1>
+<button type="button" class="btn code-tools-button" id="quarto-code-tools-source"><i class="bi"></i> Code</button>
 </div></div>
 </div>
 
@@ -211,102 +189,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><p><img src="https://mlverse.github.io/chattr/logo.png" class="img-fluid" alt="Interact with Large Language Models in RStudio • chattr" width="224"></p>
-<section id="introduction-to-chattr" class="level1" data-number="1"><h1 data-number="1">
-<span class="header-section-number">1</span> Introduction to chattr</h1>
-<p><code>chattr</code> is an R package that provides a seamless interface to Large Language Models (LLMs) directly within the RStudio and Positron IDEs. It allows you to interact with LLMs from your R scripts or through an interactive Shiny Gadget, making it a powerful tool for developers and data scientists.</p>
-</section><section id="installation" class="level1" data-number="2"><h1 data-number="2">
-<span class="header-section-number">2</span> Installation</h1>
-<p>First, you need to install the <code>chattr</code> package from GitHub.</p>
-<div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the chattr package using pak</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">"mlverse/chattr"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section><section id="getting-started" class="level1" data-number="3"><h1 data-number="3">
-<span class="header-section-number">3</span> Getting Started</h1>
-<section id="load-the-package" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="load-the-package">
-<span class="header-section-number">3.1</span> Load the Package</h2>
-<p>Once installed, load the <code>chattr</code> library into your R session.</p>
-<div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the chattr library</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(chattr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section><section id="set-up-the-chat-provider" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="set-up-the-chat-provider">
-<span class="header-section-number">3.2</span> Set Up the Chat Provider</h2>
-<p><code>chattr</code> works with various LLM providers. Here, we set up a chat provider using GitHub’s Copilot model through the <code>ellmer</code> package.</p>
-<div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the chat provider using GitHub Copilot (gpt-4o model)</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: GitHub Copilot does not require a separate OpenAI API key.</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>my_chat <span class="ot">&lt;-</span> ellmer<span class="sc">::</span><span class="fu">chat_github</span>(<span class="at">model =</span> <span class="st">"gpt-4o"</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="fu">chattr_use</span>(my_chat)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section></section><section id="interactive-usage" class="level1" data-number="4"><h1 data-number="4">
-<span class="header-section-number">4</span> Interactive Usage</h1>
-<section id="using-the-chattr-app" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="using-the-chattr-app">
-<span class="header-section-number">4.1</span> Using the chattr App</h2>
-<p><code>chattr</code> includes a Shiny-based gadget for an interactive chat experience.</p>
-<div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Launch the interactive chattr app</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># chattr_app()</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section><section id="interacting-directly-in-code" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="interacting-directly-in-code">
-<span class="header-section-number">4.2</span> Interacting Directly in Code</h2>
-<p>You can also send prompts to the LLM directly from your R code.</p>
-<div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Send a prompt to the configured chat provider</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">chattr</span>(<span class="st">"what is your name?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section></section><section id="history-management" class="level1" data-number="5"><h1 data-number="5">
-<span class="header-section-number">5</span> History Management</h1>
-<p><code>chattr</code> keeps a record of your interactions, which you can manage with the following functions.</p>
-<section id="view-history" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="view-history">
-<span class="header-section-number">5.1</span> View History</h2>
-<div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve and print the chat history</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>chattr_history <span class="ot">&lt;-</span> <span class="fu">ch_history</span>()</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(chattr_history)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section><section id="save-history" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="save-history">
-<span class="header-section-number">5.2</span> Save History</h2>
-<p>You can save your chat history to a file for later use.</p>
-<div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the current chat history to an RDS file</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(<span class="fu">ch_history</span>(), <span class="st">"chat_history.rds"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section><section id="clear-history" class="level2" data-number="5.3"><h2 data-number="5.3" class="anchored" data-anchor-id="clear-history">
-<span class="header-section-number">5.3</span> Clear History</h2>
-<p>To start a new session, you can clear the current chat history.</p>
-<div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear the chat history by passing an empty list</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">ch_history</span>(<span class="fu">list</span>()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section><section id="reload-history" class="level2" data-number="5.4"><h2 data-number="5.4" class="anchored" data-anchor-id="reload-history">
-<span class="header-section-number">5.4</span> Reload History</h2>
-<p>You can reload a previously saved chat history.</p>
-<div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load a saved chat history from an RDS file</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>chattr_history <span class="ot">&lt;-</span> <span class="fu">ch_history</span>(<span class="fu">readRDS</span>(<span class="st">"chat_history.rds"</span>))</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(chattr_history)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section></section><section id="conclusion" class="level1" data-number="6"><h1 data-number="6">
-<span class="header-section-number">6</span> Conclusion</h1>
-<p><code>chattr</code> is a versatile R package that brings the power of large language models directly into your development environment. Its ease of use, interactive features, and history management capabilities make it an essential tool for anyone looking to leverage LLMs in their R projects.</p>
-</section><section id="reference" class="level1" data-number="7"><h1 data-number="7">
-<span class="header-section-number">7</span> Reference</h1>
+</header><section id="ai-智能体" class="level1" data-number="1"><h1 data-number="1">
+<span class="header-section-number">1</span> AI 智能体</h1>
+<p>AI 智能体是一个自主实体，它通过传感器感知其环境，并通过执行器对环境做出反应，以实现特定目标。在大型语言模型（LLM）的背景下，智能体可以被设计为执行任务、做出决策，并以目标导向的方式与用户或其他系统进行交互。</p>
+<p>AI 智能体的关键特征包括：</p>
 <ul>
-<li><a href="https://mlverse.github.io/chattr/">chattr Website</a></li>
-<li><a href="https://github.com/mlverse/chattr">chattr on GitHub</a></li>
+<li>
+<strong>自主性：</strong> 能够在无需人类干预的情况下运行。</li>
+<li>
+<strong>反应性：</strong> 能够感知并响应环境中的变化。</li>
+<li>
+<strong>主动性：</strong> 能主动采取行动以实现目标。</li>
+<li>
+<strong>目标导向性：</strong> 能够为达成特定目标采取行动。</li>
+</ul></section><section id="模型-控制器-解析器mcp" class="level1" data-number="2"><h1 data-number="2">
+<span class="header-section-number">2</span> 模型-控制器-解析器（MCP）</h1>
+<p>模型-控制器-解析器（Model-Controller-Parser，简称 MCP）是一种用于构建与大型语言模型交互的应用程序的软件设计模式。它将应用程序的逻辑分为三个相互连接的组件：</p>
+<ul>
+<li>
+<strong>模型（Model）：</strong> 即 LLM 本身，负责生成文本、回答问题或执行其他语言相关的任务。</li>
+<li>
+<strong>控制器（Controller）：</strong> 管理用户与模型之间交互的组件。它接收用户输入，将其发送给模型，并处理模型的输出。</li>
+<li>
+<strong>解析器（Parser）：</strong> 负责解释模型输出并从中提取结构化信息的组件。当模型被要求生成特定格式（如 JSON 或 XML）的输出时，这一组件尤其重要。</li>
 </ul>
-<!-- --></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+<p>这种关注点的分离使得应用程序更加模块化、易于维护并具有更强的鲁棒性。</p>
+</section><section id="检索增强生成rag" class="level1" data-number="3"><h1 data-number="3">
+<span class="header-section-number">3</span> 检索增强生成（RAG）</h1>
+<p>RAG 是一种先进的 AI 框架，通过将大型语言模型与外部知识源相结合，增强其能力。它将 LLM 的生成能力与信息检索系统的精确性相结合。</p>
+<section id="rag-的工作原理" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="rag-的工作原理">
+<span class="header-section-number">3.1</span> RAG 的工作原理</h2>
+<p>RAG 的处理过程通常包含两个主要步骤：</p>
+<ol type="1">
+<li>
+<strong>检索：</strong> 当用户提供提示词时，系统首先从知识库（如文档集合或数据库）中检索相关信息。这通常使用基于向量搜索的检索模型完成。</li>
+<li>
+<strong>生成：</strong> 检索到的信息会与原始提示词结合，并一同输入到 LLM 中。模型使用增强后的上下文生成更准确、最新且更符合语境的响应。</li>
+</ol>
+<p>通过将 LLM 的回答建立在可验证的信息基础上，RAG 有助于减少幻觉，提高生成内容的整体质量与可靠性。</p>
+</section><section id="rag-的优势" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="rag-的优势">
+<span class="header-section-number">3.2</span> RAG 的优势</h2>
+<ul>
+<li>
+<strong>提高准确性：</strong> 响应基于可信知识源中的事实信息。</li>
+<li>
+<strong>增强相关性：</strong> 生成的内容更具体，也更符合用户问题的上下文。</li>
+<li>
+<strong>减少幻觉：</strong> 模型更少生成虚假或误导性的信息。</li>
+<li>
+<strong>提升透明度：</strong> 通常可以追溯生成内容的来源文档，从而提供一定程度的可解释性。</li>
+</ul></section><section id="参考资料" class="level2" data-number="3.3"><h2 data-number="3.3" class="anchored" data-anchor-id="参考资料">
+<span class="header-section-number">3.3</span> 参考资料</h2>
+<ul>
+<li><a href="https://www.youtube.com/watch?v=T-D1OfcDW1M">什么是 RAG（检索增强生成）？</a></li>
+<li><a href="https://www.youtube.com/watch?v=qMc0v2OUK3s">检索增强生成（RAG）解析</a></li>
+<li><a href="https://www.youtube.com/watch?v=329G_4vJveU&amp;t=7s">什么是检索增强生成？</a></li>
+</ul>
+<!-- --></section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
     const mode = bsSheetEl.getAttribute("data-mode");
@@ -969,135 +908,70 @@ loadGiscusWhenReady();
 <button class="btn-close" data-bs-dismiss="modal"></button>
 </div>
 <div class="modal-body"><div class="">
-<div class="sourceCode" id="cb10" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "chattr: An RStudio/Positron Interface for LLMs"</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">  eval: false</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a><span class="co">  </span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="al">![](https://mlverse.github.io/chattr/logo.png)</span>{alt="Interact with Large Language Models in RStudio • chattr" width="224"}</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction to chattr</span></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="in">`chattr`</span> is an R package that provides a seamless interface to Large Language Models (LLMs) directly within the RStudio and Positron IDEs. It allows you to interact with LLMs from your R scripts or through an interactive Shiny Gadget, making it a powerful tool for developers and data scientists.</span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="fu"># Installation</span></span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>First, you need to install the <span class="in">`chattr`</span> package from GitHub.</span>
-<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the chattr package using pak</span></span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>pak<span class="sc">::</span><span class="fu">pak</span>(<span class="st">"mlverse/chattr"</span>)</span>
-<span id="cb10-39"><a href="#cb10-39" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-40"><a href="#cb10-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a><span class="fu"># Getting Started</span></span>
-<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="fu">## Load the Package</span></span>
-<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>Once installed, load the <span class="in">`chattr`</span> library into your R session.</span>
-<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-50"><a href="#cb10-50" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the chattr library</span></span>
-<span id="cb10-51"><a href="#cb10-51" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(chattr)</span>
-<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a><span class="fu">## Set Up the Chat Provider</span></span>
-<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a><span class="in">`chattr`</span> works with various LLM providers. Here, we set up a chat provider using GitHub's Copilot model through the <span class="in">`ellmer`</span> package.</span>
-<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the chat provider using GitHub Copilot (gpt-4o model)</span></span>
-<span id="cb10-62"><a href="#cb10-62" aria-hidden="true" tabindex="-1"></a><span class="co"># Note: GitHub Copilot does not require a separate OpenAI API key.</span></span>
-<span id="cb10-63"><a href="#cb10-63" aria-hidden="true" tabindex="-1"></a>my_chat <span class="ot">&lt;-</span> ellmer<span class="sc">::</span><span class="fu">chat_github</span>(<span class="at">model =</span> <span class="st">"gpt-4o"</span>)</span>
-<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a><span class="fu">chattr_use</span>(my_chat)</span>
-<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a><span class="fu"># Interactive Usage</span></span>
-<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a><span class="fu">## Using the chattr App</span></span>
-<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a><span class="in">`chattr`</span> includes a Shiny-based gadget for an interactive chat experience.</span>
-<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a><span class="co"># Launch the interactive chattr app</span></span>
-<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a><span class="co"># chattr_app()</span></span>
-<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a><span class="fu">## Interacting Directly in Code</span></span>
-<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a>You can also send prompts to the LLM directly from your R code.</span>
-<span id="cb10-83"><a href="#cb10-83" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a><span class="co"># Send a prompt to the configured chat provider</span></span>
-<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a><span class="fu">chattr</span>(<span class="st">"what is your name?"</span>)</span>
-<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a><span class="fu"># History Management</span></span>
-<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a><span class="in">`chattr`</span> keeps a record of your interactions, which you can manage with the following functions.</span>
-<span id="cb10-94"><a href="#cb10-94" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-95"><a href="#cb10-95" aria-hidden="true" tabindex="-1"></a><span class="fu">## View History</span></span>
-<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a><span class="co"># Retrieve and print the chat history</span></span>
-<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a>chattr_history <span class="ot">&lt;-</span> <span class="fu">ch_history</span>()</span>
-<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(chattr_history)</span>
-<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a><span class="fu">## Save History</span></span>
-<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a>You can save your chat history to a file for later use.</span>
-<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-111"><a href="#cb10-111" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a><span class="co"># Save the current chat history to an RDS file</span></span>
-<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a><span class="fu">saveRDS</span>(<span class="fu">ch_history</span>(), <span class="st">"chat_history.rds"</span>)</span>
-<span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-115"><a href="#cb10-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-116"><a href="#cb10-116" aria-hidden="true" tabindex="-1"></a><span class="fu">## Clear History</span></span>
-<span id="cb10-117"><a href="#cb10-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-118"><a href="#cb10-118" aria-hidden="true" tabindex="-1"></a>To start a new session, you can clear the current chat history.</span>
-<span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-122"><a href="#cb10-122" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-123"><a href="#cb10-123" aria-hidden="true" tabindex="-1"></a><span class="co"># Clear the chat history by passing an empty list</span></span>
-<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">ch_history</span>(<span class="fu">list</span>()))</span>
-<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a><span class="fu">## Reload History</span></span>
-<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a>You can reload a previously saved chat history.</span>
-<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-134"><a href="#cb10-134" aria-hidden="true" tabindex="-1"></a><span class="co"># Load a saved chat history from an RDS file</span></span>
-<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a>chattr_history <span class="ot">&lt;-</span> <span class="fu">ch_history</span>(<span class="fu">readRDS</span>(<span class="st">"chat_history.rds"</span>))</span>
-<span id="cb10-136"><a href="#cb10-136" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(chattr_history)</span>
-<span id="cb10-137"><a href="#cb10-137" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a><span class="fu"># Conclusion</span></span>
-<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a><span class="in">`chattr`</span> is a versatile R package that brings the power of large language models directly into your development environment. Its ease of use, interactive features, and history management capabilities make it an essential tool for anyone looking to leverage LLMs in their R projects.</span>
-<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a><span class="fu"># Reference</span></span>
-<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-145"><a href="#cb10-145" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">chattr Website</span><span class="co">](https://mlverse.github.io/chattr/)</span></span>
-<span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">chattr on GitHub</span><span class="co">](https://github.com/mlverse/chattr)</span></span>
-</code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb1" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "人工智能基础概念"</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu"># AI 智能体</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>AI 智能体是一个自主实体，它通过传感器感知其环境，并通过执行器对环境做出反应，以实现特定目标。在大型语言模型（LLM）的背景下，智能体可以被设计为执行任务、做出决策，并以目标导向的方式与用户或其他系统进行交互。</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>AI 智能体的关键特征包括：</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**自主性：** 能够在无需人类干预的情况下运行。</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**反应性：** 能够感知并响应环境中的变化。</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**主动性：** 能主动采取行动以实现目标。</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**目标导向性：** 能够为达成特定目标采取行动。</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu"># 模型-控制器-解析器（MCP）</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>模型-控制器-解析器（Model-Controller-Parser，简称 MCP）是一种用于构建与大型语言模型交互的应用程序的软件设计模式。它将应用程序的逻辑分为三个相互连接的组件：</span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**模型（Model）：** 即 LLM 本身，负责生成文本、回答问题或执行其他语言相关的任务。</span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**控制器（Controller）：** 管理用户与模型之间交互的组件。它接收用户输入，将其发送给模型，并处理模型的输出。</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**解析器（Parser）：** 负责解释模型输出并从中提取结构化信息的组件。当模型被要求生成特定格式（如 JSON 或 XML）的输出时，这一组件尤其重要。</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>这种关注点的分离使得应用程序更加模块化、易于维护并具有更强的鲁棒性。</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a><span class="fu"># 检索增强生成（RAG）</span></span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>RAG 是一种先进的 AI 框架，通过将大型语言模型与外部知识源相结合，增强其能力。它将 LLM 的生成能力与信息检索系统的精确性相结合。</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a><span class="fu">## RAG 的工作原理</span></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>RAG 的处理过程通常包含两个主要步骤：</span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>**检索：** 当用户提供提示词时，系统首先从知识库（如文档集合或数据库）中检索相关信息。这通常使用基于向量搜索的检索模型完成。</span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>**生成：** 检索到的信息会与原始提示词结合，并一同输入到 LLM 中。模型使用增强后的上下文生成更准确、最新且更符合语境的响应。</span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>通过将 LLM 的回答建立在可验证的信息基础上，RAG 有助于减少幻觉，提高生成内容的整体质量与可靠性。</span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a><span class="fu">## RAG 的优势</span></span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**提高准确性：** 响应基于可信知识源中的事实信息。</span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**增强相关性：** 生成的内容更具体，也更符合用户问题的上下文。</span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**减少幻觉：** 模型更少生成虚假或误导性的信息。</span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**提升透明度：** 通常可以追溯生成内容的来源文档，从而提供一定程度的可解释性。</span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a><span class="fu">## 参考资料</span></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">什么是 RAG（检索增强生成）？</span><span class="co">](https://www.youtube.com/watch?v=T-D1OfcDW1M)</span></span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">检索增强生成（RAG）解析</span><span class="co">](https://www.youtube.com/watch?v=qMc0v2OUK3s)</span></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">什么是检索增强生成？</span><span class="co">](https://www.youtube.com/watch?v=329G_4vJveU&amp;t=7s)</span></span></code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div>
 </div></div></div>
 </div> <!-- /content -->

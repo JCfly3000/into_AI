@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="cn" xml:lang="cn">
 <head>
-<link rel="alternate" hreflang="en" href="/chatlas.html" />
-<link rel="alternate" hreflang="cn" href="/cn/chatlas.cn.html" />
+<link rel="alternate" hreflang="en" href="/mlx_lm python.html" />
+<link rel="alternate" hreflang="cn" href="/cn/mlx_lm python.cn.html" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-99.9.9">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>Chatlas: A Unified LLM Interface for Python – AI handbook</title>
+<title>Python mlx-lm 入门指南 – AI手册</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,7 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
     <img src="./Piktogramm-AI-100.jpg" alt="" class="navbar-logo"></a>
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">AI handbook</span>
+    <span class="navbar-title">AI手册</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item"><div class="dropdown" id="languages-links-parent">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> EN</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="/cn/chatlas.html" id="language-link-cn">中文</a></li></ul>
+<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> 中文</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="/mlx_lm%20python.html" id="language-link-en">EN</a></li></ul>
 </div></li>
 <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
@@ -124,7 +124,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">ellmer</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./chatlas.html" aria-current="page"> 
+    <a class="nav-link" href="./chatlas.html"> 
 <span class="menu-text">chatlas</span></a>
   </li>  
   <li class="nav-item">
@@ -136,7 +136,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span class="menu-text">gemini</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./mlx_lm%20python.html"> 
+    <a class="nav-link active" href="./mlx_lm%20python.html" aria-current="page"> 
 <span class="menu-text">mlx_lm</span></a>
   </li>  
 </ul>
@@ -158,32 +158,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#introduction-to-chatlas" id="toc-introduction-to-chatlas" class="nav-link active" data-scroll-target="#introduction-to-chatlas"><span class="header-section-number">1</span> Introduction to Chatlas</a></li>
-  <li><a href="#setup" id="toc-setup" class="nav-link" data-scroll-target="#setup"><span class="header-section-number">2</span> Setup</a></li>
+<li><a href="#mlx-lm-%E7%AE%80%E4%BB%8B" id="toc-mlx-lm-简介" class="nav-link active" data-scroll-target="#mlx-lm-简介"><span class="header-section-number">1</span> mlx-lm 简介</a></li>
+  <li><a href="#%E7%8E%AF%E5%A2%83%E8%AE%BE%E7%BD%AE" id="toc-环境设置" class="nav-link" data-scroll-target="#环境设置"><span class="header-section-number">2</span> 环境设置</a></li>
   <li>
-<a href="#using-google-gemini" id="toc-using-google-gemini" class="nav-link" data-scroll-target="#using-google-gemini"><span class="header-section-number">3</span> Using Google Gemini</a>
+<a href="#%E8%BF%90%E8%A1%8C%E9%A2%84%E8%AE%AD%E7%BB%83%E6%A8%A1%E5%9E%8B" id="toc-运行预训练模型" class="nav-link" data-scroll-target="#运行预训练模型"><span class="header-section-number">3</span> 运行预训练模型</a>
   <ul class="collapse">
-<li><a href="#token-counting" id="toc-token-counting" class="nav-link" data-scroll-target="#token-counting"><span class="header-section-number">3.1</span> Token Counting</a></li>
-  <li><a href="#text-generation" id="toc-text-generation" class="nav-link" data-scroll-target="#text-generation"><span class="header-section-number">3.2</span> Text Generation</a></li>
+<li><a href="#%E5%8A%A0%E8%BD%BD%E6%A8%A1%E5%9E%8B%E5%92%8C%E5%88%86%E8%AF%8D%E5%99%A8" id="toc-加载模型和分词器" class="nav-link" data-scroll-target="#加载模型和分词器"><span class="header-section-number">3.1</span> 加载模型和分词器</a></li>
+  <li><a href="#%E7%94%9F%E6%88%90%E6%96%87%E6%9C%AC" id="toc-生成文本" class="nav-link" data-scroll-target="#生成文本"><span class="header-section-number">3.2</span> 生成文本</a></li>
   </ul>
 </li>
-  <li>
-<a href="#interactive-modes" id="toc-interactive-modes" class="nav-link" data-scroll-target="#interactive-modes"><span class="header-section-number">4</span> Interactive Modes</a>
-  <ul class="collapse">
-<li><a href="#web-application" id="toc-web-application" class="nav-link" data-scroll-target="#web-application"><span class="header-section-number">4.1</span> Web Application</a></li>
-  <li><a href="#console-mode" id="toc-console-mode" class="nav-link" data-scroll-target="#console-mode"><span class="header-section-number">4.2</span> Console Mode</a></li>
-  </ul>
-</li>
-  <li><a href="#vision-capabilities" id="toc-vision-capabilities" class="nav-link" data-scroll-target="#vision-capabilities"><span class="header-section-number">5</span> Vision Capabilities</a></li>
-  <li><a href="#advanced-features" id="toc-advanced-features" class="nav-link" data-scroll-target="#advanced-features"><span class="header-section-number">6</span> Advanced Features</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">7</span> Conclusion</a></li>
-  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">8</span> Reference</a></li>
+  <li><a href="#%E7%BB%93%E8%AE%BA" id="toc-结论" class="nav-link" data-scroll-target="#结论"><span class="header-section-number">4</span> 结论</a></li>
+  <li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99" id="toc-参考资料" class="nav-link" data-scroll-target="#参考资料"><span class="header-section-number">5</span> 参考资料</a></li>
   </ul></nav>
 </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <div class="quarto-title-block"><div>
-<h1 class="title">Chatlas: A Unified LLM Interface for Python</h1>
+<h1 class="title">Python mlx-lm 入门指南</h1>
 <button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu">
 <li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li>
 <li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li>
@@ -204,109 +195,69 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   
 
 
-</header><section id="introduction-to-chatlas" class="level1" data-number="1"><h1 data-number="1">
-<span class="header-section-number">1</span> Introduction to Chatlas</h1>
-<p><code>chatlas</code> is a Python package that provides a simple and unified interface for interacting with various large language model (LLM) providers. This allows you to switch between different models and providers with minimal code changes, streamlining your workflow.</p>
-<p>This document demonstrates how to use <code>chatlas</code> to connect to Google’s Gemini models, perform text generation, and analyze images.</p>
-<p><img src="images/clipboard-1865868378.png" class="img-fluid" width="420"></p>
-</section><section id="setup" class="level1" data-number="2"><h1 data-number="2">
-<span class="header-section-number">2</span> Setup</h1>
-<p>First, you need to install the necessary Python packages.</p>
-<div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure required Python packages are available to reticulate</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_require</span>(<span class="fu">c</span>(<span class="st">'chatlas'</span>, <span class="st">'keyring'</span>, <span class="st">'google-genai'</span>, <span class="st">'Pillow'</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</header><p><img src="images/clipboard-2481905032.png" class="img-fluid"></p>
+<section id="mlx-lm-简介" class="level1" data-number="1"><h1 data-number="1">
+<span class="header-section-number">1</span> mlx-lm 简介</h1>
+<p><code>mlx-lm</code> 是一个功能强大的 Python 库，专为在 Apple 芯片上运行和微调大型语言模型（LLM）而设计。 它构建于 Apple 的 MLX 框架之上，该框架专为在 Apple 硬件上实现高性能机器学习而优化。 <code>mlx-lm</code> 可以让您轻松下载、运行和自定义各种大型语言模型。</p>
+<p>本指南将引导您完成环境设置、必要软件包安装以及运行预训练模型的过程。</p>
+</section><section id="环境设置" class="level1" data-number="2"><h1 data-number="2">
+<span class="header-section-number">2</span> 环境设置</h1>
+<p>我们将使用 <code>uv</code> 来创建虚拟环境并管理我们的依赖项。</p>
+<div id="53456012" class="cell" data-execution_count="1">
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 初始化一个新的虚拟环境</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>uv init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the chatlas package and its dependencies</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>pip3 install <span class="op">-</span>U chatlas</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>pip3 install <span class="op">-</span>q <span class="op">-</span>U google<span class="op">-</span>genai</span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>pip3 install shiny</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>pip3 install keyring</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="871e7466" class="cell" data-execution_count="2">
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 安装所需的软件包</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>uv add mlx<span class="op">-</span>lm nbclient nbformat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import necessary classes and functions</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> chatlas <span class="im">import</span> ChatGoogle, token_usage, content_image_file</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> keyring</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>让我们验证一下我们正在使用的 Python 版本。</p>
+<div id="d91e38bf" class="cell" data-execution_count="3">
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.version)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section><section id="using-google-gemini" class="level1" data-number="3"><h1 data-number="3">
-<span class="header-section-number">3</span> Using Google Gemini</h1>
-<p>Here’s how to set up and use a Google Gemini model with <code>chatlas</code>.</p>
-<div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the ChatGoogle class</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> chatlas <span class="im">import</span> ChatGoogle</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the chat model</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>chat_google_model <span class="op">=</span> ChatGoogle(</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  model<span class="op">=</span><span class="st">"gemini-1.5-flash"</span>,</span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  api_key<span class="op">=</span>keyring.get_password(<span class="st">"system"</span>, <span class="st">"google_ai_api_key"</span>)</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="co"># You can also set a system prompt to guide the model's behavior</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">#, system_prompt="You are an IT expert"</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>chat_google_model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="运行预训练模型" class="level1" data-number="3"><h1 data-number="3">
+<span class="header-section-number">3</span> 运行预训练模型</h1>
+<p>现在我们的环境已经设置好，我们可以下载并运行一个预训练的 LLM。</p>
+<section id="加载模型和分词器" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="加载模型和分词器">
+<span class="header-section-number">3.1</span> 加载模型和分词器</h2>
+<p>我们将使用 <code>mlx_lm</code> 中的 <code>load</code> 函数来下载并加载模型及其对应的分词器。在本例中，我们使用的是来自 <code>mlx-community</code> Hugging Face 组织的 Mistral-7B-Instruct-v0.3 模型的 4 位量化版本。</p>
+<div id="1f929135" class="cell" data-execution_count="4">
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlx_lm <span class="im">import</span> load, generate</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 加载预训练模型和分词器</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>model, tokenizer <span class="op">=</span> load(<span class="st">"mlx-community/Mistral-7B-Instruct-v0.3-4bit"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<section id="token-counting" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="token-counting">
-<span class="header-section-number">3.1</span> Token Counting</h2>
-<p>You can count the number of tokens in a given text before sending it to the model. This is useful for managing costs and staying within model limits.</p>
-<div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the tokens in a prompt</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>chat_google_model.token_count(<span class="st">"What preceding languages most influenced Python?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section><section id="生成文本" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="生成文本">
+<span class="header-section-number">3.2</span> 生成文本</h2>
+<p>模型和分词器加载后，我们可以使用 <code>generate</code> 函数根据提示生成文本。</p>
+<div id="c1e1e9fa" class="cell" data-execution_count="5">
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 定义提示</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> <span class="st">"写一个关于爱因斯坦的故事"</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># 使用聊天模板格式化提示</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>messages <span class="op">=</span> [{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: prompt}]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>formatted_prompt <span class="op">=</span> tokenizer.apply_chat_template(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    messages, add_generation_prompt<span class="op">=</span><span class="va">True</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 生成文本</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> generate(model, tokenizer, prompt<span class="op">=</span>formatted_prompt, verbose<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>text</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section><section id="text-generation" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="text-generation">
-<span class="header-section-number">3.2</span> Text Generation</h2>
-<p>Now, let’s generate a response from the model.</p>
-<div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Send a prompt to the model and get a response</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> chat_google_model.chat(<span class="st">"What preceding languages most influenced Python?"</span>)</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section></section><section id="interactive-modes" class="level1" data-number="4"><h1 data-number="4">
-<span class="header-section-number">4</span> Interactive Modes</h1>
-<p><code>chatlas</code> offers interactive modes for a more conversational experience.</p>
-<section id="web-application" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="web-application">
-<span class="header-section-number">4.1</span> Web Application</h2>
-<p>You can launch a web-based chat application.</p>
-<div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Launch the interactive web app</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>chat_google_model.app()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section><section id="console-mode" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="console-mode">
-<span class="header-section-number">4.2</span> Console Mode</h2>
-<p>Alternatively, you can chat with the model directly in your console.</p>
-<div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Start an interactive console session</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>chat_google_model.console()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section></section><section id="vision-capabilities" class="level1" data-number="5"><h1 data-number="5">
-<span class="header-section-number">5</span> Vision Capabilities</h1>
-<p><code>chatlas</code> also supports multi-modal models that can analyze images.</p>
-<p><img src="images/IMG_0220.jpg" class="img-fluid"></p>
-<div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Analyze an image and describe what you see</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>chat_google_model.chat(</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">"What do you see in this image?"</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    content_image_file(<span class="st">"images/IMG_0220.jpg"</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-</div>
-</section><section id="advanced-features" class="level1" data-number="6"><h1 data-number="6">
-<span class="header-section-number">6</span> Advanced Features</h1>
-<p><code>chatlas</code> also supports more advanced features like structured output and tool calling, which allow for more complex and powerful applications.</p>
-</section><section id="conclusion" class="level1" data-number="7"><h1 data-number="7">
-<span class="header-section-number">7</span> Conclusion</h1>
-<p><code>chatlas</code> simplifies the process of working with large language models in Python by providing a consistent and easy-to-use interface. Whether you’re performing simple text generation, analyzing images, or building complex applications with structured data, <code>chatlas</code> is a valuable tool for any data scientist or developer working with LLMs.</p>
-</section><section id="reference" class="level1" data-number="8"><h1 data-number="8">
-<span class="header-section-number">8</span> Reference</h1>
+</section></section><section id="结论" class="level1" data-number="4"><h1 data-number="4">
+<span class="header-section-number">4</span> 结论</h1>
+<p><code>mlx-lm</code> 提供了一种在 Apple 芯片上使用大型语言模型的简单高效的方法。 它与 MLX 框架的集成确保了最佳性能，使其成为希望在 Apple 设备上利用 LLM 强大功能的开发人员和研究人员的绝佳选择。</p>
+</section><section id="参考资料" class="level1" data-number="5"><h1 data-number="5">
+<span class="header-section-number">5</span> 参考资料</h1>
 <ul>
-<li><a href="https://posit-dev.github.io/chatlas/">Chatlas Documentation</a></li>
+<li><a href="https://github.com/ml-explore/mlx-lm">mlx-lm on GitHub</a></li>
+<li><a href="https://github.com/Blaizzy/mlx-vlm">mlx-vlm on GitHub</a></li>
 </ul>
 <!-- --></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -971,144 +922,98 @@ loadGiscusWhenReady();
 <button class="btn-close" data-bs-dismiss="modal"></button>
 </div>
 <div class="modal-body"><div class="">
-<div class="sourceCode" id="cb10" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Chatlas: A Unified LLM Interface for Python"</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co">  eval: false</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction to Chatlas</span></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="in">`chatlas`</span> is a Python package that provides a simple and unified interface for interacting with various large language model (LLM) providers. This allows you to switch between different models and providers with minimal code changes, streamlining your workflow.</span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>This document demonstrates how to use <span class="in">`chatlas`</span> to connect to Google's Gemini models, perform text generation, and analyze images.</span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-1865868378.png)</span>{width="420"}</span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="fu"># Setup</span></span>
-<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>First, you need to install the necessary Python packages.</span>
-<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="co"># Ensure required Python packages are available to reticulate</span></span>
-<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a>reticulate<span class="sc">::</span><span class="fu">py_require</span>(<span class="fu">c</span>(<span class="st">'chatlas'</span>, <span class="st">'keyring'</span>, <span class="st">'google-genai'</span>, <span class="st">'Pillow'</span>))</span>
-<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-41"><a href="#cb10-41" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb10-42"><a href="#cb10-42" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb10-43"><a href="#cb10-43" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the chatlas package and its dependencies</span></span>
-<span id="cb10-44"><a href="#cb10-44" aria-hidden="true" tabindex="-1"></a>pip3 install <span class="op">-</span>U chatlas</span>
-<span id="cb10-45"><a href="#cb10-45" aria-hidden="true" tabindex="-1"></a>pip3 install <span class="op">-</span>q <span class="op">-</span>U google<span class="op">-</span>genai</span>
-<span id="cb10-46"><a href="#cb10-46" aria-hidden="true" tabindex="-1"></a>pip3 install shiny</span>
-<span id="cb10-47"><a href="#cb10-47" aria-hidden="true" tabindex="-1"></a>pip3 install keyring</span>
-<span id="cb10-48"><a href="#cb10-48" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-49"><a href="#cb10-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-52"><a href="#cb10-52" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb10-53"><a href="#cb10-53" aria-hidden="true" tabindex="-1"></a><span class="co"># Import necessary classes and functions</span></span>
-<span id="cb10-54"><a href="#cb10-54" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> chatlas <span class="im">import</span> ChatGoogle, token_usage, content_image_file</span>
-<span id="cb10-55"><a href="#cb10-55" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> keyring</span>
-<span id="cb10-56"><a href="#cb10-56" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-57"><a href="#cb10-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-58"><a href="#cb10-58" aria-hidden="true" tabindex="-1"></a><span class="fu"># Using Google Gemini</span></span>
-<span id="cb10-59"><a href="#cb10-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-60"><a href="#cb10-60" aria-hidden="true" tabindex="-1"></a>Here’s how to set up and use a Google Gemini model with <span class="in">`chatlas`</span>.</span>
-<span id="cb10-61"><a href="#cb10-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-64"><a href="#cb10-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb10-65"><a href="#cb10-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Import the ChatGoogle class</span></span>
-<span id="cb10-66"><a href="#cb10-66" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> chatlas <span class="im">import</span> ChatGoogle</span>
-<span id="cb10-67"><a href="#cb10-67" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-68"><a href="#cb10-68" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the chat model</span></span>
-<span id="cb10-69"><a href="#cb10-69" aria-hidden="true" tabindex="-1"></a>chat_google_model <span class="op">=</span> ChatGoogle(</span>
-<span id="cb10-70"><a href="#cb10-70" aria-hidden="true" tabindex="-1"></a>  model<span class="op">=</span><span class="st">"gemini-1.5-flash"</span>,</span>
-<span id="cb10-71"><a href="#cb10-71" aria-hidden="true" tabindex="-1"></a>  api_key<span class="op">=</span>keyring.get_password(<span class="st">"system"</span>, <span class="st">"google_ai_api_key"</span>)</span>
-<span id="cb10-72"><a href="#cb10-72" aria-hidden="true" tabindex="-1"></a>  <span class="co"># You can also set a system prompt to guide the model's behavior</span></span>
-<span id="cb10-73"><a href="#cb10-73" aria-hidden="true" tabindex="-1"></a>  <span class="co">#, system_prompt="You are an IT expert"</span></span>
-<span id="cb10-74"><a href="#cb10-74" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-75"><a href="#cb10-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-76"><a href="#cb10-76" aria-hidden="true" tabindex="-1"></a>chat_google_model</span>
-<span id="cb10-77"><a href="#cb10-77" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-78"><a href="#cb10-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-79"><a href="#cb10-79" aria-hidden="true" tabindex="-1"></a><span class="fu">## Token Counting</span></span>
-<span id="cb10-80"><a href="#cb10-80" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-81"><a href="#cb10-81" aria-hidden="true" tabindex="-1"></a>You can count the number of tokens in a given text before sending it to the model. This is useful for managing costs and staying within model limits.</span>
-<span id="cb10-82"><a href="#cb10-82" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-85"><a href="#cb10-85" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb10-86"><a href="#cb10-86" aria-hidden="true" tabindex="-1"></a><span class="co"># Count the tokens in a prompt</span></span>
-<span id="cb10-87"><a href="#cb10-87" aria-hidden="true" tabindex="-1"></a>chat_google_model.token_count(<span class="st">"What preceding languages most influenced Python?"</span>)</span>
-<span id="cb10-88"><a href="#cb10-88" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-89"><a href="#cb10-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-90"><a href="#cb10-90" aria-hidden="true" tabindex="-1"></a><span class="fu">## Text Generation</span></span>
-<span id="cb10-91"><a href="#cb10-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-92"><a href="#cb10-92" aria-hidden="true" tabindex="-1"></a>Now, let's generate a response from the model.</span>
-<span id="cb10-93"><a href="#cb10-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-96"><a href="#cb10-96" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb10-97"><a href="#cb10-97" aria-hidden="true" tabindex="-1"></a><span class="co"># Send a prompt to the model and get a response</span></span>
-<span id="cb10-98"><a href="#cb10-98" aria-hidden="true" tabindex="-1"></a>result <span class="op">=</span> chat_google_model.chat(<span class="st">"What preceding languages most influenced Python?"</span>)</span>
-<span id="cb10-99"><a href="#cb10-99" aria-hidden="true" tabindex="-1"></a>result</span>
-<span id="cb10-100"><a href="#cb10-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-101"><a href="#cb10-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-102"><a href="#cb10-102" aria-hidden="true" tabindex="-1"></a><span class="fu"># Interactive Modes</span></span>
-<span id="cb10-103"><a href="#cb10-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-104"><a href="#cb10-104" aria-hidden="true" tabindex="-1"></a><span class="in">`chatlas`</span> offers interactive modes for a more conversational experience.</span>
-<span id="cb10-105"><a href="#cb10-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-106"><a href="#cb10-106" aria-hidden="true" tabindex="-1"></a><span class="fu">## Web Application</span></span>
-<span id="cb10-107"><a href="#cb10-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-108"><a href="#cb10-108" aria-hidden="true" tabindex="-1"></a>You can launch a web-based chat application.</span>
-<span id="cb10-109"><a href="#cb10-109" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-112"><a href="#cb10-112" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb10-113"><a href="#cb10-113" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb10-114"><a href="#cb10-114" aria-hidden="true" tabindex="-1"></a><span class="co"># Launch the interactive web app</span></span>
-<span id="cb10-115"><a href="#cb10-115" aria-hidden="true" tabindex="-1"></a>chat_google_model.app()</span>
-<span id="cb10-116"><a href="#cb10-116" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-117"><a href="#cb10-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-118"><a href="#cb10-118" aria-hidden="true" tabindex="-1"></a><span class="fu">## Console Mode</span></span>
-<span id="cb10-119"><a href="#cb10-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-120"><a href="#cb10-120" aria-hidden="true" tabindex="-1"></a>Alternatively, you can chat with the model directly in your console.</span>
-<span id="cb10-121"><a href="#cb10-121" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-124"><a href="#cb10-124" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb10-125"><a href="#cb10-125" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb10-126"><a href="#cb10-126" aria-hidden="true" tabindex="-1"></a><span class="co"># Start an interactive console session</span></span>
-<span id="cb10-127"><a href="#cb10-127" aria-hidden="true" tabindex="-1"></a>chat_google_model.console()</span>
-<span id="cb10-128"><a href="#cb10-128" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-129"><a href="#cb10-129" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-130"><a href="#cb10-130" aria-hidden="true" tabindex="-1"></a><span class="fu"># Vision Capabilities</span></span>
-<span id="cb10-131"><a href="#cb10-131" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-132"><a href="#cb10-132" aria-hidden="true" tabindex="-1"></a><span class="in">`chatlas`</span> also supports multi-modal models that can analyze images.</span>
-<span id="cb10-133"><a href="#cb10-133" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-134"><a href="#cb10-134" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/IMG_0220.jpg)</span></span>
-<span id="cb10-135"><a href="#cb10-135" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-138"><a href="#cb10-138" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
-<span id="cb10-139"><a href="#cb10-139" aria-hidden="true" tabindex="-1"></a><span class="co"># Analyze an image and describe what you see</span></span>
-<span id="cb10-140"><a href="#cb10-140" aria-hidden="true" tabindex="-1"></a>chat_google_model.chat(</span>
-<span id="cb10-141"><a href="#cb10-141" aria-hidden="true" tabindex="-1"></a>    <span class="st">"What do you see in this image?"</span>,</span>
-<span id="cb10-142"><a href="#cb10-142" aria-hidden="true" tabindex="-1"></a>    content_image_file(<span class="st">"images/IMG_0220.jpg"</span>)</span>
-<span id="cb10-143"><a href="#cb10-143" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-144"><a href="#cb10-144" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb10-145"><a href="#cb10-145" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-146"><a href="#cb10-146" aria-hidden="true" tabindex="-1"></a><span class="fu"># Advanced Features</span></span>
-<span id="cb10-147"><a href="#cb10-147" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-148"><a href="#cb10-148" aria-hidden="true" tabindex="-1"></a><span class="in">`chatlas`</span> also supports more advanced features like structured output and tool calling, which allow for more complex and powerful applications.</span>
-<span id="cb10-149"><a href="#cb10-149" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-150"><a href="#cb10-150" aria-hidden="true" tabindex="-1"></a><span class="fu"># Conclusion</span></span>
-<span id="cb10-151"><a href="#cb10-151" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-152"><a href="#cb10-152" aria-hidden="true" tabindex="-1"></a><span class="in">`chatlas`</span> simplifies the process of working with large language models in Python by providing a consistent and easy-to-use interface. Whether you're performing simple text generation, analyzing images, or building complex applications with structured data, <span class="in">`chatlas`</span> is a valuable tool for any data scientist or developer working with LLMs.</span>
-<span id="cb10-153"><a href="#cb10-153" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-154"><a href="#cb10-154" aria-hidden="true" tabindex="-1"></a><span class="fu"># Reference</span></span>
-<span id="cb10-155"><a href="#cb10-155" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-156"><a href="#cb10-156" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">Chatlas Documentation</span><span class="co">](https://posit-dev.github.io/chatlas/)</span></span>
+<div class="sourceCode" id="cb6" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Python mlx-lm 入门指南"</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co">  error: false</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co">  eval: false</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co">  </span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="co">    toc: true</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co">    toc-location: right</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: show</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="co">    number-sections: true</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-bg: true</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a><span class="co">    code-block-border-left: "#31BAE9"</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-2481905032.png)</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="fu"># mlx-lm 简介</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a><span class="in">`mlx-lm`</span> 是一个功能强大的 Python 库，专为在 Apple 芯片上运行和微调大型语言模型（LLM）而设计。 它构建于 Apple 的 MLX 框架之上，该框架专为在 Apple 硬件上实现高性能机器学习而优化。 <span class="in">`mlx-lm`</span> 可以让您轻松下载、运行和自定义各种大型语言模型。</span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>本指南将引导您完成环境设置、必要软件包安装以及运行预训练模型的过程。</span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a><span class="fu"># 环境设置</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>我们将使用 <span class="in">`uv`</span> 来创建虚拟环境并管理我们的依赖项。</span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a><span class="co"># 初始化一个新的虚拟环境</span></span>
+<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>uv init</span>
+<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a><span class="co"># 安装所需的软件包</span></span>
+<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>uv add mlx<span class="op">-</span>lm nbclient nbformat</span>
+<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>让我们验证一下我们正在使用的 Python 版本。</span>
+<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-52"><a href="#cb6-52" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb6-53"><a href="#cb6-53" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.version)</span>
+<span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a><span class="fu"># 运行预训练模型</span></span>
+<span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>现在我们的环境已经设置好，我们可以下载并运行一个预训练的 LLM。</span>
+<span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-61"><a href="#cb6-61" aria-hidden="true" tabindex="-1"></a><span class="fu">## 加载模型和分词器</span></span>
+<span id="cb6-62"><a href="#cb6-62" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-63"><a href="#cb6-63" aria-hidden="true" tabindex="-1"></a>我们将使用 <span class="in">`mlx_lm`</span> 中的 <span class="in">`load`</span> 函数来下载并加载模型及其对应的分词器。在本例中，我们使用的是来自 <span class="in">`mlx-community`</span> Hugging Face 组织的 Mistral-7B-Instruct-v0.3 模型的 4 位量化版本。</span>
+<span id="cb6-64"><a href="#cb6-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-67"><a href="#cb6-67" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb6-68"><a href="#cb6-68" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlx_lm <span class="im">import</span> load, generate</span>
+<span id="cb6-69"><a href="#cb6-69" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-70"><a href="#cb6-70" aria-hidden="true" tabindex="-1"></a><span class="co"># 加载预训练模型和分词器</span></span>
+<span id="cb6-71"><a href="#cb6-71" aria-hidden="true" tabindex="-1"></a>model, tokenizer <span class="op">=</span> load(<span class="st">"mlx-community/Mistral-7B-Instruct-v0.3-4bit"</span>)</span>
+<span id="cb6-72"><a href="#cb6-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-73"><a href="#cb6-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-74"><a href="#cb6-74" aria-hidden="true" tabindex="-1"></a><span class="fu">## 生成文本</span></span>
+<span id="cb6-75"><a href="#cb6-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-76"><a href="#cb6-76" aria-hidden="true" tabindex="-1"></a>模型和分词器加载后，我们可以使用 <span class="in">`generate`</span> 函数根据提示生成文本。</span>
+<span id="cb6-77"><a href="#cb6-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-80"><a href="#cb6-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{python}</span></span>
+<span id="cb6-81"><a href="#cb6-81" aria-hidden="true" tabindex="-1"></a><span class="co"># 定义提示</span></span>
+<span id="cb6-82"><a href="#cb6-82" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> <span class="st">"写一个关于爱因斯坦的故事"</span></span>
+<span id="cb6-83"><a href="#cb6-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-84"><a href="#cb6-84" aria-hidden="true" tabindex="-1"></a><span class="co"># 使用聊天模板格式化提示</span></span>
+<span id="cb6-85"><a href="#cb6-85" aria-hidden="true" tabindex="-1"></a>messages <span class="op">=</span> [{<span class="st">"role"</span>: <span class="st">"user"</span>, <span class="st">"content"</span>: prompt}]</span>
+<span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>formatted_prompt <span class="op">=</span> tokenizer.apply_chat_template(</span>
+<span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a>    messages, add_generation_prompt<span class="op">=</span><span class="va">True</span></span>
+<span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a><span class="co"># 生成文本</span></span>
+<span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>text <span class="op">=</span> generate(model, tokenizer, prompt<span class="op">=</span>formatted_prompt, verbose<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>text</span>
+<span id="cb6-93"><a href="#cb6-93" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb6-94"><a href="#cb6-94" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-95"><a href="#cb6-95" aria-hidden="true" tabindex="-1"></a><span class="fu"># 结论</span></span>
+<span id="cb6-96"><a href="#cb6-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-97"><a href="#cb6-97" aria-hidden="true" tabindex="-1"></a><span class="in">`mlx-lm`</span> 提供了一种在 Apple 芯片上使用大型语言模型的简单高效的方法。 它与 MLX 框架的集成确保了最佳性能，使其成为希望在 Apple 设备上利用 LLM 强大功能的开发人员和研究人员的绝佳选择。</span>
+<span id="cb6-98"><a href="#cb6-98" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-99"><a href="#cb6-99" aria-hidden="true" tabindex="-1"></a><span class="fu"># 参考资料</span></span>
+<span id="cb6-100"><a href="#cb6-100" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-101"><a href="#cb6-101" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">mlx-lm on GitHub</span><span class="co">](https://github.com/ml-explore/mlx-lm)</span></span>
+<span id="cb6-102"><a href="#cb6-102" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="co">[</span><span class="ot">mlx-vlm on GitHub</span><span class="co">](https://github.com/Blaizzy/mlx-vlm)</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div>
 </div></div></div>

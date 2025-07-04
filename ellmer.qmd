@@ -1,9 +1,10 @@
 ---
-title: "ellmer LLM pacakge for R"
+title: "ellmer: A Flexible LLM Framework for R"
 
 execute:
   warning: false
   error: false
+  eval: false
   
 format:
   html:
@@ -16,81 +17,142 @@ format:
     code-block-border-left: "#31BAE9"
 ---
 
-ellmer makes it easy to use large language models (LLM) from R. It supports a wide variety of LLM providers and implements a rich set of features including streaming outputs, tool/function calling, structured data extraction, and more.
-
 ![](https://ellmer.tidyverse.org/logo.png){width="260"}
 
-```{r}
-#install.packages("ellmer")
-```
+# Introduction to ellmer
+
+`ellmer` is a powerful and flexible R package designed to simplify the use of large language models (LLMs). It offers support for a wide range of LLM providers and includes a rich set of features such as streaming outputs, tool/function calling, and structured data extraction. This makes it an excellent choice for integrating advanced AI capabilities into your R projects.
+
+
+
+# Installation
+
+To get started, install the `ellmer` package from CRAN.
 
 ```{r}
+#| eval: false
+# Install the ellmer package
+install.packages("ellmer")
+```
+
+# Getting Started
+
+## Load Necessary Packages
+
+Load the `ellmer` and `keyring` packages into your R session. `keyring` is used for securely managing API keys.
+
+```{r}
+# Load the required libraries
 library(ellmer)
 library(keyring)
 ```
 
-# Google gemini
+# Using Google Gemini
+
+This section demonstrates how to use `ellmer` with Google's Gemini models.
+
+## Initialize the Chat Model
+
+First, create an instance of the Gemini chat model, providing your API key and specifying the model you want to use.
 
 ```{r}
-chat_gemini_model=chat_google_gemini(
-  system_prompt = NULL,
-  base_url = "https://generativelanguage.googleapis.com/v1beta/",
+# Set up the Google Gemini chat model
+chat_gemini_model <- chat_google_gemini(
   api_key = key_get("google_ai_api_key"),
-  model = "gemini-2.0-flash",
-  api_args = list(),
-  echo = NULL
+  model = "gemini-1.5-flash"
 )
 
 chat_gemini_model
 ```
 
+## Generate Text
+
+Once the model is initialized, you can start a chat and generate text.
+
 ```{r}
-result=chat_gemini_model$chat("Tell me three jokes about statisticians")
+# Generate a response from the model
+result <- chat_gemini_model$chat("Tell me three jokes about statisticians")
 result
 ```
 
-# Interactive mode
+# Interactive Modes
+
+`ellmer` provides interactive modes for a more conversational experience.
+
+## Live Browser Mode
+
+You can launch a web-based interface to chat with the model.
 
 ```{r}
-#live_browser(chat_gemini_model)
+#| eval: false
+# Open an interactive chat session in a web browser
+live_browser(chat_gemini_model)
 ```
 
-# console mode
+## Console Mode
+
+Alternatively, you can chat with the model directly in the R console.
 
 ```{r}
-#live_console(chat_gemini_model)
+#| eval: false
+# Start an interactive chat session in the console
+live_console(chat_gemini_model)
 ```
 
+# Advanced Usage
 
-# using system prompt
+## Using a System Prompt
+
+You can provide a system prompt to guide the model's behavior and tone.
 
 ```{r}
-system_prompt = "You are a IT expert"
+# Define a system prompt
+system_prompt <- "You are an IT expert"
 system_prompt
 ```
 
-
 ```{r}
-chat_gemini_model=chat_google_gemini(
+# Initialize the model with the system prompt
+chat_gemini_model_expert <- chat_google_gemini(
   system_prompt = system_prompt,
-  base_url = "https://generativelanguage.googleapis.com/v1beta/",
   api_key = key_get("google_ai_api_key"),
-  model = "gemini-2.0-flash",
-  api_args = list(),
-  echo = NULL
+  model = "gemini-2.5-flash"
 )
 
-chat_gemini_model
+chat_gemini_model_expert
 ```
 
-# vision
+## Vision Capabilities
 
-# structured output
+`ellmer` also supports multi-modal models that can analyze images.
 
+![](images/clipboard-2594497482.jpeg)
 
-# tool calling
+First, upload the image file to the Google API.
 
+```{r}
+# Upload an image file
+file <- google_upload(
+  path = "coffee.jpeg",
+  api_key = key_get("google_ai_api_key")
+)
+```
 
-# reference
+Then, you can ask the model to describe or analyze the image.
 
-https://ellmer.tidyverse.org/
+```{r}
+# Ask the model to summarize the content of the image
+chat_gemini_model$chat(file, "Give me a three-paragraph summary of this")
+```
+
+# Advanced Features
+
+`ellmer` also supports more advanced features like structured output and tool calling, which allow for more complex and powerful applications.
+
+# Conclusion
+
+`ellmer` is a comprehensive and user-friendly R package for working with large language models. Its wide range of features, support for multiple providers, and ease of use make it an invaluable tool for R users who want to incorporate the power of LLMs into their data analysis and applications.
+
+# Reference
+
+- [ellmer Website](https://ellmer.tidyverse.org/)

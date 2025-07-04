@@ -1,0 +1,128 @@
+---
+title: "chattr：一个用于LLMs的RStudio/Positron接口"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+  
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+![](https://mlverse.github.io/chattr/logo.png){alt="在RStudio中与大语言模型互动 • chattr" width="224"}
+
+
+# chattr 简介
+
+`chattr` 是一个 R 包，它直接在 RStudio 和 Positron IDE 中提供了一个与大语言模型 (LLM) 无缝对接的接口。它允许您通过 R 脚本或交互式的 Shiny 小工具与 LLM 互动，使其成为开发人员和数据科学家的强大工具。
+
+
+
+# 安装
+
+首先，您需要从 GitHub 安装 `chattr` 包。
+
+```{r}
+#| eval: false
+# 使用 pak 安装 chattr 包
+pak::pak("mlverse/chattr")
+```
+
+# 入门指南
+
+## 加载包
+
+安装后，将 `chattr` 库加载到您的 R 会话中。
+
+```{r}
+# 加载 chattr 库
+library(chattr)
+```
+
+## 设置聊天提供商
+
+`chattr` 支持多种 LLM 提供商。在这里，我们通过 `ellmer` 包使用 GitHub 的 Copilot 模型来设置一个聊天提供商。
+
+```{r}
+# 使用 GitHub Copilot (gpt-4o 模型) 设置聊天提供商
+# 注意：GitHub Copilot 不需要单独的 OpenAI API 密钥。
+my_chat <- ellmer::chat_github(model = "gpt-4o")
+chattr_use(my_chat)
+```
+
+# 交互式使用
+
+## 使用 chattr 应用
+
+`chattr` 包含一个基于 Shiny 的小工具，用于提供交互式聊天体验。
+
+```{r}
+# 启动交互式 chattr 应用
+# chattr_app()
+```
+
+## 在代码中直接互动
+
+您也可以直接从 R 代码向 LLM 发送提示。
+
+```{r}
+# 向已配置的聊天提供商发送提示
+chattr("你叫什么名字？")
+```
+
+# 历史记录管理
+
+`chattr` 会记录您的互动历史，您可以使用以下函数进行管理。
+
+## 查看历史记录
+
+```{r}
+# 检索并打印聊天历史记录
+chattr_history <- ch_history()
+print(chattr_history)
+```
+
+## 保存历史记录
+
+您可以将聊天历史记录保存到文件中以备后用。
+
+```{r}
+# 将当前聊天历史记录保存到 RDS 文件
+saveRDS(ch_history(), "chat_history.rds")
+```
+
+## 清除历史记录
+
+要开始一个新会话，您可以清除当前的聊天历史记录。
+
+```{r}
+# 通过传递一个空列表来清除聊天历史记录
+print(ch_history(list()))
+```
+
+## 重新加载历史记录
+
+您可以重新加载之前保存的聊天历史记录。
+
+```{r}
+# 从 RDS 文件加载已保存的聊天历史记录
+chattr_history <- ch_history(readRDS("chat_history.rds"))
+print(chattr_history)
+```
+
+# 结论
+
+`chattr` 是一个功能多样的 R 包，它将大语言模型的强大功能直接带入您的开发环境。其易用性、交互式功能和历史记录管理能力使其成为任何希望在 R 项目中利用 LLM 的人士的必备工具。
+
+# 参考
+
+- [chattr 网站](https://mlverse.github.io/chattr/)
+- [GitHub 上的 chattr](https://github.com/mlverse/chattr)

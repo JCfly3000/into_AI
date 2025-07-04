@@ -1,9 +1,10 @@
 ---
-title: "chattr interface LLM pacakge for Rstudio/Positron"
+title: "chattr: An RStudio/Positron Interface for LLMs"
 
 execute:
   warning: false
   error: false
+  eval: false
   
 format:
   html:
@@ -16,70 +17,112 @@ format:
     code-block-border-left: "#31BAE9"
 ---
 
-chattr is an interface to LLMs (Large Language Models). It enables interaction with the model directly from RStudio and Positron. chattr allows you to submit a prompt to the LLM from your script, or by using the provided Shiny Gadget.
-
 ![](https://mlverse.github.io/chattr/logo.png){alt="Interact with Large Language Models in RStudio • chattr" width="224"}
 
-# install package
+
+# Introduction to chattr
+
+`chattr` is an R package that provides a seamless interface to Large Language Models (LLMs) directly within the RStudio and Positron IDEs. It allows you to interact with LLMs from your R scripts or through an interactive Shiny Gadget, making it a powerful tool for developers and data scientists.
+
+
+
+# Installation
+
+First, you need to install the `chattr` package from GitHub.
 
 ```{r}
+#| eval: false
+# Install the chattr package using pak
 pak::pak("mlverse/chattr")
 ```
 
-# Load package
+# Getting Started
+
+## Load the Package
+
+Once installed, load the `chattr` library into your R session.
 
 ```{r}
+# Load the chattr library
 library(chattr)
 ```
 
-# Use package
+## Set Up the Chat Provider
+
+`chattr` works with various LLM providers. Here, we set up a chat provider using GitHub's Copilot model through the `ellmer` package.
 
 ```{r}
-#copilot do not need OpenAI_API_KEY
+# Set up the chat provider using GitHub Copilot (gpt-4o model)
+# Note: GitHub Copilot does not require a separate OpenAI API key.
 my_chat <- ellmer::chat_github(model = "gpt-4o")
 chattr_use(my_chat)
 ```
 
-# using LLM as app
+# Interactive Usage
+
+## Using the chattr App
+
+`chattr` includes a Shiny-based gadget for an interactive chat experience.
 
 ```{r}
-#chattr_app()
+# Launch the interactive chattr app
+# chattr_app()
 ```
 
-# using LLM on code
+## Interacting Directly in Code
+
+You can also send prompts to the LLM directly from your R code.
 
 ```{r}
+# Send a prompt to the configured chat provider
 chattr("what is your name?")
 ```
 
+# History Management
+
+`chattr` keeps a record of your interactions, which you can manage with the following functions.
+
+## View History
+
 ```{r}
-chattr_history=ch_history()
+# Retrieve and print the chat history
+chattr_history <- ch_history()
 print(chattr_history)
 ```
 
-# save history
+## Save History
+
+You can save your chat history to a file for later use.
 
 ```{r}
-chat_file <- tempfile()
+# Save the current chat history to an RDS file
 saveRDS(ch_history(), "chat_history.rds")
 ```
 
-# clear history
+## Clear History
+
+To start a new session, you can clear the current chat history.
 
 ```{r}
+# Clear the chat history by passing an empty list
 print(ch_history(list()))
 ```
 
-# Re-load history
+## Reload History
+
+You can reload a previously saved chat history.
 
 ```{r}
-chattr_history=ch_history(readRDS("chat_history.rds"))
+# Load a saved chat history from an RDS file
+chattr_history <- ch_history(readRDS("chat_history.rds"))
 print(chattr_history)
-
 ```
 
-# reference
+# Conclusion
 
-https://mlverse.github.io/chattr/
+`chattr` is a versatile R package that brings the power of large language models directly into your development environment. Its ease of use, interactive features, and history management capabilities make it an essential tool for anyone looking to leverage LLMs in their R projects.
 
-https://github.com/mlverse/chattr
+# Reference
+
+- [chattr Website](https://mlverse.github.io/chattr/)
+- [chattr on GitHub](https://github.com/mlverse/chattr)

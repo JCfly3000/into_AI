@@ -1,0 +1,156 @@
+---
+title: "ellmer：一个灵活的 R 语言 LLM 框架"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+  
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+![](https://ellmer.tidyverse.org/logo.png){width="260"}
+
+# ellmer 简介
+
+`ellmer` 是一个功能强大且灵活的 R 包，旨在简化大语言模型（LLM）的使用。 它支持广泛的 LLM 提供商，并包含丰富的功能，如流式输出、工具/函数调用和结构化数据提取。 这使其成为将先进的 AI 功能集成到您的 R 项目中的绝佳选择。
+
+# 安装
+
+首先，从 CRAN 安装 `ellmer` 包。
+
+```{r}
+#| eval: false
+# 安装 ellmer 包
+install.packages("ellmer")
+```
+
+# 入门指南
+
+## 加载必要的包
+
+将 `ellmer` 和 `keyring` 包加载到您的 R 会话中。`keyring` 用于安全地管理 API 密钥。
+
+```{r}
+# 加载所需的库
+library(ellmer)
+library(keyring)
+```
+
+# 使用 Google Gemini
+
+本节演示如何将 `ellmer` 与 Google 的 Gemini 模型结合使用。
+
+## 初始化聊天模型
+
+首先，创建一个 Gemini 聊天模型的实例，提供您的 API 密钥并指定要使用的模型。
+
+```{r}
+# 设置 Google Gemini 聊天模型
+chat_gemini_model <- chat_google_gemini(
+  api_key = key_get("google_ai_api_key"),
+  model = "gemini-1.5-flash"
+)
+
+chat_gemini_model
+```
+
+## 生成文本
+
+模型初始化后，您就可以开始聊天并生成文本。
+
+```{r}
+# 从模型生成回应
+result <- chat_gemini_model$chat("给我讲三个关于统计学家的笑话")
+result
+```
+
+# 交互模式
+
+`ellmer` 提供了交互模式，以获得更具对话性的体验。
+
+## 实时浏览器模式
+
+您可以启动一个基于 Web 的界面与模型聊天。
+
+```{r}
+#| eval: false
+# 在网页浏览器中打开交互式聊天会话
+live_browser(chat_gemini_model)
+```
+
+## 控制台模式
+
+或者，您可以直接在 R 控制台中与模型聊天。
+
+```{r}
+#| eval: false
+# 在控制台中启动交互式聊天会话
+live_console(chat_gemini_model)
+```
+
+# 高级用法
+
+## 使用系统提示
+
+您可以提供系统提示来引导模型的行为和语气。
+
+```{r}
+# 定义一个系统提示
+system_prompt <- "你是一位IT专家"
+system_prompt
+```
+
+```{r}
+# 使用系统提示初始化模型
+chat_gemini_model_expert <- chat_google_gemini(
+  system_prompt = system_prompt,
+  api_key = key_get("google_ai_api_key"),
+  model = "gemini-1.5-flash"
+)
+
+chat_gemini_model_expert
+```
+
+## 视觉能力
+
+`ellmer` 还支持可以分析图像的多模态模型。
+
+![](images/clipboard-2594497482.jpeg)
+
+首先，将图像文件上传到 Google API。
+
+```{r}
+# 上传一个图像文件
+file <- google_upload(
+  path = "coffee.jpeg",
+  api_key = key_get("google_ai_api_key")
+)
+```
+
+然后，您可以要求模型描述或分析该图像。
+
+```{r}
+# 要求模型总结图像内容
+chat_gemini_model$chat(file, "请用三段话总结一下这张图片的内容")
+```
+
+# 高级功能
+
+`ellmer` 还支持更高级的功能，如结构化输出和工具调用，这些功能可以实现更复杂、更强大的应用程序。
+
+# 结论
+
+`ellmer` 是一个全面且用户友好的 R 包，用于处理大语言模型。其广泛的功能、对多个提供商的支持以及易用性，使其成为希望将 LLM 的强大功能融入其数据分析和应用程序的 R 用户的宝贵工具。
+
+# 参考
+
+- [ellmer 网站](https://ellmer.tidyverse.org/)

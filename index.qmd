@@ -1,15 +1,16 @@
 ---
-title: "AI handbook"
+title: "AI Handbook"
 ---
 
-This is a Quarto website.
+Welcome to the AI Handbook, a comprehensive resource for developers and data scientists looking to harness the power of Artificial Intelligence. This Quarto-based website provides a curated collection of tutorials, guides, and practical examples for using a variety of AI tools and models in both R and Python.
 
+Our mission is to make AI more accessible and easier to integrate into your projects. Whether you are just beginning your journey into AI or are an experienced practitioner, you will find valuable information here to help you advance your skills.
 
-# In to R
+This handbook covers a wide range of topics, including:
 
-# R model
+*   **Fundamental AI Concepts:** Clear explanations of core concepts such as AI Agents, the Model-Controller-Parser (MCP) design pattern, and Retrieval-Augmented Generation (RAG).
+*   **R Packages for AI:** In-depth tutorials on popular R packages like `ellmer`, `chattr`, and `ollamar` for seamless integration of large language models (LLMs) into your R workflows.
+*   **Python Libraries for AI:** Practical guides on using Python libraries such as `chatlas` for a unified experience with different LLM providers, and `mlx-lm` for high-performance model execution on Apple silicon.
+*   **Command-Line Tools:** Instructions on how to use command-line interfaces like the `gemini-cli` to interact with powerful models like Google's Gemini directly from your terminal.
 
-# In to Python
-
-# Pyhton model
-
+We invite you to explore the different sections of this handbook to discover the latest in AI technology and learn how to apply it to your own projects. With a focus on hands-on learning and practical application, the AI Handbook is your go-to guide for navigating the exciting world of Artificial Intelligence.

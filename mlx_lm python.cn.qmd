@@ -1,0 +1,92 @@
+---
+title: "Python mlx-lm 入门指南"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+  
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+![](images/clipboard-2481905032.png)
+
+# mlx-lm 简介
+
+`mlx-lm` 是一个功能强大的 Python 库，专为在 Apple 芯片上运行和微调大型语言模型（LLM）而设计。 它构建于 Apple 的 MLX 框架之上，该框架专为在 Apple 硬件上实现高性能机器学习而优化。 `mlx-lm` 可以让您轻松下载、运行和自定义各种大型语言模型。
+
+本指南将引导您完成环境设置、必要软件包安装以及运行预训练模型的过程。
+
+# 环境设置
+
+我们将使用 `uv` 来创建虚拟环境并管理我们的依赖项。
+
+```{python}
+#| eval: false
+# 初始化一个新的虚拟环境
+uv init
+```
+
+```{python}
+#| eval: false
+# 安装所需的软件包
+uv add mlx-lm nbclient nbformat
+```
+
+让我们验证一下我们正在使用的 Python 版本。
+
+```{python}
+import sys
+print(sys.version)
+```
+
+# 运行预训练模型
+
+现在我们的环境已经设置好，我们可以下载并运行一个预训练的 LLM。
+
+## 加载模型和分词器
+
+我们将使用 `mlx_lm` 中的 `load` 函数来下载并加载模型及其对应的分词器。在本例中，我们使用的是来自 `mlx-community` Hugging Face 组织的 Mistral-7B-Instruct-v0.3 模型的 4 位量化版本。
+
+```{python}
+from mlx_lm import load, generate
+
+# 加载预训练模型和分词器
+model, tokenizer = load("mlx-community/Mistral-7B-Instruct-v0.3-4bit")
+```
+
+## 生成文本
+
+模型和分词器加载后，我们可以使用 `generate` 函数根据提示生成文本。
+
+```{python}
+# 定义提示
+prompt = "写一个关于爱因斯坦的故事"
+
+# 使用聊天模板格式化提示
+messages = [{"role": "user", "content": prompt}]
+formatted_prompt = tokenizer.apply_chat_template(
+    messages, add_generation_prompt=True
+)
+
+# 生成文本
+text = generate(model, tokenizer, prompt=formatted_prompt, verbose=True)
+text
+```
+
+# 结论
+
+`mlx-lm` 提供了一种在 Apple 芯片上使用大型语言模型的简单高效的方法。 它与 MLX 框架的集成确保了最佳性能，使其成为希望在 Apple 设备上利用 LLM 强大功能的开发人员和研究人员的绝佳选择。
+
+# 参考资料
+
+-   [mlx-lm on GitHub](https://github.com/ml-explore/mlx-lm)
+-   [mlx-vlm on GitHub](https://github.com/Blaizzy/mlx-vlm)

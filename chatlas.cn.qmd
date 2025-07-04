@@ -1,0 +1,138 @@
+---
+title: "Chatlas：一个统一的 Python 大语言模型接口"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+# Chatlas 简介
+
+`chatlas` 是一个 Python 包，为多个大语言模型（LLM）提供了一个简单统一的交互接口。它允许你在不同模型和提供商之间轻松切换，仅需最少的代码更改，从而优化工作流程。
+
+本文档演示如何使用 `chatlas` 连接 Google 的 Gemini 模型，进行文本生成以及图像分析。
+
+![](images/clipboard-1865868378.png){width="420"}
+
+# 环境准备
+
+首先，你需要安装所需的 Python 软件包。
+
+```{r}
+# 确保 reticulate 可以访问所需的 Python 包
+reticulate::py_require(c('chatlas', 'keyring', 'google-genai', 'Pillow'))
+```
+
+```{python}
+#| eval: false
+# 安装 chatlas 及其依赖包
+pip3 install -U chatlas
+pip3 install -q -U google-genai
+pip3 install shiny
+pip3 install keyring
+```
+
+```{python}
+# 导入所需的类和函数
+from chatlas import ChatGoogle, token_usage, content_image_file
+import keyring
+```
+
+# 使用 Google Gemini
+
+以下是使用 `chatlas` 设置并调用 Google Gemini 模型的方法。
+
+```{python}
+# 导入 ChatGoogle 类
+from chatlas import ChatGoogle
+
+# 初始化聊天模型
+chat_google_model = ChatGoogle(
+  model="gemini-1.5-flash",
+  api_key=keyring.get_password("system", "google_ai_api_key")
+  # 你也可以设置系统提示词来引导模型行为
+  #, system_prompt="You are an IT expert"
+)
+
+chat_google_model
+```
+
+## Token 计数
+
+你可以在将文本发送给模型之前计算其 token 数量。这有助于管理成本并保持在模型的限制范围内。
+
+```{python}
+# 统计提示词中的 token 数
+chat_google_model.token_count("What preceding languages most influenced Python?")
+```
+
+## 文本生成
+
+现在，让我们从模型生成一个响应。
+
+```{python}
+# 向模型发送提示词并获取响应
+result = chat_google_model.chat("What preceding languages most influenced Python?")
+result
+```
+
+# 交互模式
+
+`chatlas` 提供了交互模式，使体验更具对话性。
+
+## 网页应用
+
+你可以启动一个基于网页的聊天应用。
+
+```{python}
+#| eval: false
+# 启动交互式网页应用
+chat_google_model.app()
+```
+
+## 控制台模式
+
+或者，你可以直接在控制台中与模型对话。
+
+```{python}
+#| eval: false
+# 启动交互式控制台会话
+chat_google_model.console()
+```
+
+# 图像能力
+
+`chatlas` 也支持多模态模型，可以分析图像。
+
+![](images/IMG_0220.jpg)
+
+```{python}
+# 分析图像并描述你看到的内容
+chat_google_model.chat(
+    "What do you see in this image?",
+    content_image_file("images/IMG_0220.jpg")
+)
+```
+
+# 高级功能
+
+`chatlas` 还支持结构化输出、工具调用等更高级的功能，能够实现更复杂强大的应用场景。
+
+# 总结
+
+`chatlas` 通过提供一致且易于使用的接口，简化了在 Python 中使用大语言模型的过程。无论是进行简单的文本生成、图像分析，还是构建带有结构化数据的复杂应用，`chatlas` 都是数据科学家和开发者处理 LLM 任务的有力工具。
+
+# 参考资料
+
+- [Chatlas 文档](https://posit-dev.github.io/chatlas/)

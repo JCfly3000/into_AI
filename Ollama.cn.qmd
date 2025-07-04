@@ -1,0 +1,144 @@
+---
+title: "Ollama：R 的本地大语言模型包"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    
+---
+
+# Ollama 与 `ollamar` R 包简介
+
+[Ollama](https://ollama.com/) 是一个强大的工具，允许你在本地计算机上运行大型语言模型（LLMs）。这为隐私保护和离线使用提供了可能。`ollamar` 是一个为 Ollama 提供简单直观接口的 R 包，方便你在 R 项目中轻松使用 LLM 的强大能力。
+
+本指南将通过示例讲解如何使用 `ollamar` 包进行文本生成、图像分析等任务。
+
+![](images/clipboard-3650207110.png){width="245"}
+
+# 开始使用 `ollamar`
+
+首先，你需要安装并加载 `ollamar` 包。
+
+```{r}
+# 加载 ollamar 库
+library(ollamar)
+```
+
+## 下载并运行 Ollama
+
+在使用该包之前，请确保你已经下载了最新版本的 Ollama 并在本地计算机上运行。你可以从 [Ollama 官方网站](https://ollama.com/) 下载。
+
+## 测试连接
+
+Ollama 运行后，你可以在 R 中测试连接以确保设置正确。
+
+```{r}
+# 测试与 Ollama 的连接
+test_connection()
+```
+
+# 模型管理
+
+`ollamar` 提供了一些函数，用于管理系统中可用的 LLM 模型。
+
+## 列出已下载模型
+
+你可以查看所有本地已下载的模型。
+
+```{r}
+# 列出所有本地可用模型
+ollamar::list_models()
+```
+
+## 下载新模型
+
+你可以从 Ollama 库中轻松下载新模型。下面示例下载的是适用于文本与图像任务的 `gemma:2b` 模型。
+
+```{r}
+# 下载 gemma:2b 模型
+ollamar::pull("gemma:2b")
+```
+
+你也可以查看模型的详细信息。
+```{r}
+# 显示模型信息
+#ollamar::show("gemma:2b")
+```
+
+## 删除模型
+
+如果不再需要某个模型，你可以将其删除以释放空间。
+
+```{r}
+# 通过名称和标签删除模型
+delete("gemma:latest")
+```
+
+# 运行模型
+
+## 运行文本模型
+
+你可以使用 `generate` 函数与文本模型进行交互。
+
+### 使用 `gemma:2b` 模型
+
+```{r}
+# 使用 gemma:2b 模型生成一则短故事
+# 参数 'output = "text"' 表示输出为字符字符串
+txt <- generate("gemma:2b", "Tell me a 50-word story", output = "text")
+txt
+```
+
+## 运行图像模型
+
+现代多模态模型还可以分析图像。
+
+![](images/clipboard-2594497482.jpeg)
+
+```{r}
+# 定义图像路径
+image_path <- "coffee.jpeg"
+# 让模型描述图像内容
+result <- generate("gemma:2b", "What is in the image?", images = image_path)
+# 处理响应以提取文本
+resp_process(result, "text")
+```
+
+你也可以就图像提出更具体的问题。
+
+```{r}
+# 询问图像中有多少杯咖啡
+result <- generate("gemma:2b", "How many coffees are in this image?", images = image_path)
+resp_process(result, "text")
+```
+
+```{r}
+# 询问图像的主色调
+result <- generate("gemma:2b", "What is the main color of this image?", images = image_path)
+resp_process(result, "text")
+```
+
+```{r}
+# 执行内容审核
+result <- generate("gemma:2b", "Is there any adult content in this image?", images = image_path)
+resp_process(result, "text")
+```
+
+# 总结
+
+R 的 `ollamar` 包提供了一种无缝方式将本地大型语言模型集成进你的 R 工作流程。它提供了简洁的模型管理函数，并支持文本生成和图像分析等功能，是 R 用户探索 LLM 能力的实用工具。
+
+# 参考资料
+
+- [GitHub 上的 ollama-r 项目](https://github.com/hauselin/ollama-r)

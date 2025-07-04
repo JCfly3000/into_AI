@@ -18,12 +18,18 @@ website:
     left:
       - href: index.qmd
         text: Home
+      - href: LLM.qmd
+        text: LLM
       - href: ellmer.qmd
         text: ellmer
       - href: chatlas.qmd
         text: chatlas
       - href: chattr.qmd
         text: chattr  
+      - href: gemini.qmd
+        text: gemini
+      - href: mlx_lm python.qmd
+        text: mlx_lm    
       
     right:
       - text: "中文"
@@ -50,3 +56,16 @@ resources:
 
 filters:
   - foldableCodeBlcok.lua
+
+babelquarto:
+  languagecodes:
+  - name: cn
+    text: "中文"
+  - name: en
+    text: "EN"
+  mainlanguage: 'en'
+  languages: ['cn']
+title-cn: AI手册
+description-cn: description in cn
+author-cn: author in cn
+lang: en

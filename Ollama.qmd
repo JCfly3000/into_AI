@@ -1,0 +1,144 @@
+---
+title: "Ollama LLM Package for R"
+
+execute:
+  warning: false
+  error: false
+  eval: false
+  
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+    
+---
+
+# Introduction to Ollama and the `ollamar` R Package
+
+[Ollama](https://ollama.com/) is a powerful tool that allows you to run large language models (LLMs) locally on your own computer. This provides privacy and offline capabilities. The `ollamar` R package provides a simple and intuitive interface to interact with Ollama, making it easy to leverage the power of LLMs within your R projects.
+
+This document provides a hands-on guide to using the `ollamar` package for various tasks, including text generation and image analysis.
+
+![](images/clipboard-3650207110.png){width="245"}
+
+# Getting Started with `ollamar`
+
+First, you need to install and load the `ollamar` package.
+
+```{r}
+# Load the ollamar library
+library(ollamar)
+```
+
+## Download and Run Ollama
+
+Before using the package, ensure you have downloaded the latest version of Ollama and that it is running on your local computer. You can download it from the [official Ollama website](https://ollama.com/).
+
+## Test Connection
+
+Once Ollama is running, you can test the connection from R to ensure everything is set up correctly.
+
+```{r}
+# Test the connection to Ollama
+test_connection()
+```
+
+# Model Management
+
+`ollamar` provides functions to manage the LLMs available on your system.
+
+## List Downloaded Models
+
+You can list all the models that you have downloaded and are available locally.
+
+```{r}
+# List all locally available models
+ollamar::list_models()
+```
+
+## Download a New Model
+
+You can easily download new models from the Ollama library. Here, we download the `gemma:2b` model, which is suitable for both text and image-related tasks.
+
+```{r}
+# Download the gemma:2b model
+ollamar::pull("gemma:2b")
+```
+
+You can also view the details of a model.
+```{r}
+# Show model information
+#ollamar::show("gemma:2b")
+```
+
+## Delete a Model
+
+If you no longer need a model, you can delete it to free up space.
+
+```{r}
+# Delete a model by name and tag
+delete("gemma:latest")
+```
+
+# Running Models
+
+## Run a Text Model
+
+You can use the `generate` function to interact with a text-based model.
+
+### Using the `gemma:2b` model
+
+```{r}
+# Generate a short story using the gemma:2b model
+# The 'output = "text"' argument simplifies the output to a character string.
+txt <- generate("gemma:2b", "Tell me a 50-word story", output = "text")
+txt
+```
+
+## Run an Image Model
+
+Modern multi-modal models can also analyze images.
+
+![](images/clipboard-2594497482.jpeg)
+
+```{r}
+# Define the path to the image
+image_path <- "coffee.jpeg"
+# Ask the model to describe the image
+result <- generate("gemma:2b", "What is in the image?", images = image_path)
+# Process the response to extract the text
+resp_process(result, "text")
+```
+
+You can ask more specific questions about the image.
+
+```{r}
+# Ask about the number of coffees in the image
+result <- generate("gemma:2b", "How many coffees are in this image?", images = image_path)
+resp_process(result, "text")
+```
+
+```{r}
+# Ask about the main color of the image
+result <- generate("gemma:2b", "What is the main color of this image?", images = image_path)
+resp_process(result, "text")
+```
+
+```{r}
+# Perform content moderation
+result <- generate("gemma:2b", "Is there any adult content in this image?", images = image_path)
+resp_process(result, "text")
+```
+
+# Conclusion
+
+The `ollamar` package for R provides a seamless way to integrate local large language models into your R workflow. It offers straightforward functions for model management and for performing tasks like text generation and image analysis. This makes it a valuable tool for R users looking to explore the capabilities of LLMs.
+
+# Reference
+
+- [ollama-r on GitHub](https://github.com/hauselin/ollama-r)

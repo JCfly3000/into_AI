@@ -1,0 +1,64 @@
+---
+title: "Fundamental AI Concepts"
+
+execute:
+  warning: false
+  error: false
+  
+format:
+  html:
+    toc: true
+    toc-location: right
+    code-fold: show
+    code-tools: true
+    number-sections: true
+    code-block-bg: true
+    code-block-border-left: "#31BAE9"
+---
+
+# AI Agent
+
+An AI agent is an autonomous entity that perceives its environment through sensors and acts upon that environment through actuators to achieve specific goals. In the context of large language models (LLMs), an agent can be designed to perform tasks, make decisions, and interact with users or other systems in a goal-oriented manner.
+
+Key characteristics of an AI agent include:
+
+- **Autonomy:** The ability to operate without direct human intervention.
+- **Reactivity:** The ability to perceive and respond to changes in its environment.
+- **Pro-activeness:** The ability to take initiative to achieve its goals.
+- **Goal-orientation:** The ability to act in a way that is directed towards achieving specific objectives.
+
+# Model-Controller-Parser (MCP)
+
+Model-Controller-Parser (MCP) is a software design pattern used to structure applications that interact with large language models. It separates the application's logic into three interconnected components:
+
+-   **Model:** The LLM itself, which is responsible for generating text, answering questions, or performing other language-based tasks.
+-   **Controller:** The component that manages the interaction between the user and the model. It receives user input, sends it to the model, and processes the model's output.
+-   **Parser:** The component that is responsible for interpreting the model's output and extracting structured information from it. This is particularly useful when the model is asked to generate output in a specific format, such as JSON or XML.
+
+This separation of concerns makes the application more modular, easier to maintain, and more robust.
+
+# Retrieval-Augmented Generation (RAG)
+
+RAG is an advanced AI framework that enhances the capabilities of large language models by integrating them with external knowledge sources. It combines the generative power of LLMs with the precision of information retrieval systems.
+
+## How RAG Works
+
+The RAG process typically involves two main steps:
+
+1.  **Retrieval:** When a user provides a prompt, the system first retrieves relevant information from a knowledge base, such as a collection of documents or a database. This is done using a retrieval model, which is often based on techniques like vector search.
+2.  **Generation:** The retrieved information is then combined with the original prompt and fed into the LLM. The model uses this augmented context to generate a more accurate, up-to-date, and contextually relevant response.
+
+By grounding the LLM's responses in verifiable information, RAG helps to reduce hallucinations and improve the overall quality and reliability of the generated content.
+
+## Benefits of RAG
+
+-   **Improved Accuracy:** Responses are based on factual information from a trusted knowledge source.
+-   **Enhanced Relevance:** The generated content is more specific and relevant to the user's query.
+-   **Reduced Hallucinations:** The model is less likely to generate false or misleading information.
+-   **Greater Transparency:** It is often possible to trace the generated response back to the source documents, providing a degree of explainability.
+
+## References
+
+- [What is RAG (Retrieval-Augmented Generation)?](https://www.youtube.com/watch?v=T-D1OfcDW1M)
+- [Retrieval Augmented Generation (RAG) Explained](https://www.youtube.com/watch?v=qMc0v2OUK3s)
+- [What is Retrieval-Augmented Generation?](https://www.youtube.com/watch?v=329G_4vJveU&t=7s)

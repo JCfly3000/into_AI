@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="cn" xml:lang="cn">
 <head>
 <link rel="alternate" hreflang="en" href="/ellmer.html" />
 <link rel="alternate" hreflang="cn" href="/cn/ellmer.cn.html" />
@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 <meta name="generator" content="quarto-99.9.9">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<title>ellmer: A Flexible LLM Framework for R – AI handbook</title>
+<title>ellmer：一个灵活的 R 语言 LLM 框架 – AI手册</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,7 +99,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a href="./index.html" class="navbar-brand navbar-brand-logo">
     <img src="./Piktogramm-AI-100.jpg" alt="" class="navbar-logo"></a>
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">AI handbook</span>
+    <span class="navbar-title">AI手册</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item"><div class="dropdown" id="languages-links-parent">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> EN</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="/cn/ellmer.html" id="language-link-cn">中文</a></li></ul>
+<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> 中文</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="/ellmer.html" id="language-link-en">EN</a></li></ul>
 </div></li>
 <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
@@ -158,44 +158,44 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#introduction-to-ellmer" id="toc-introduction-to-ellmer" class="nav-link active" data-scroll-target="#introduction-to-ellmer"><span class="header-section-number">1</span> Introduction to ellmer</a></li>
-  <li><a href="#installation" id="toc-installation" class="nav-link" data-scroll-target="#installation"><span class="header-section-number">2</span> Installation</a></li>
+<li><a href="#ellmer-%E7%AE%80%E4%BB%8B" id="toc-ellmer-简介" class="nav-link active" data-scroll-target="#ellmer-简介"><span class="header-section-number">1</span> ellmer 简介</a></li>
+  <li><a href="#%E5%AE%89%E8%A3%85" id="toc-安装" class="nav-link" data-scroll-target="#安装"><span class="header-section-number">2</span> 安装</a></li>
   <li>
-<a href="#getting-started" id="toc-getting-started" class="nav-link" data-scroll-target="#getting-started"><span class="header-section-number">3</span> Getting Started</a>
+<a href="#%E5%85%A5%E9%97%A8%E6%8C%87%E5%8D%97" id="toc-入门指南" class="nav-link" data-scroll-target="#入门指南"><span class="header-section-number">3</span> 入门指南</a>
   <ul class="collapse">
-<li><a href="#load-necessary-packages" id="toc-load-necessary-packages" class="nav-link" data-scroll-target="#load-necessary-packages"><span class="header-section-number">3.1</span> Load Necessary Packages</a></li>
+<li><a href="#%E5%8A%A0%E8%BD%BD%E5%BF%85%E8%A6%81%E7%9A%84%E5%8C%85" id="toc-加载必要的包" class="nav-link" data-scroll-target="#加载必要的包"><span class="header-section-number">3.1</span> 加载必要的包</a></li>
   </ul>
 </li>
   <li>
-<a href="#using-google-gemini" id="toc-using-google-gemini" class="nav-link" data-scroll-target="#using-google-gemini"><span class="header-section-number">4</span> Using Google Gemini</a>
+<a href="#%E4%BD%BF%E7%94%A8-google-gemini" id="toc-使用-google-gemini" class="nav-link" data-scroll-target="#使用-google-gemini"><span class="header-section-number">4</span> 使用 Google Gemini</a>
   <ul class="collapse">
-<li><a href="#initialize-the-chat-model" id="toc-initialize-the-chat-model" class="nav-link" data-scroll-target="#initialize-the-chat-model"><span class="header-section-number">4.1</span> Initialize the Chat Model</a></li>
-  <li><a href="#generate-text" id="toc-generate-text" class="nav-link" data-scroll-target="#generate-text"><span class="header-section-number">4.2</span> Generate Text</a></li>
+<li><a href="#%E5%88%9D%E5%A7%8B%E5%8C%96%E8%81%8A%E5%A4%A9%E6%A8%A1%E5%9E%8B" id="toc-初始化聊天模型" class="nav-link" data-scroll-target="#初始化聊天模型"><span class="header-section-number">4.1</span> 初始化聊天模型</a></li>
+  <li><a href="#%E7%94%9F%E6%88%90%E6%96%87%E6%9C%AC" id="toc-生成文本" class="nav-link" data-scroll-target="#生成文本"><span class="header-section-number">4.2</span> 生成文本</a></li>
   </ul>
 </li>
   <li>
-<a href="#interactive-modes" id="toc-interactive-modes" class="nav-link" data-scroll-target="#interactive-modes"><span class="header-section-number">5</span> Interactive Modes</a>
+<a href="#%E4%BA%A4%E4%BA%92%E6%A8%A1%E5%BC%8F" id="toc-交互模式" class="nav-link" data-scroll-target="#交互模式"><span class="header-section-number">5</span> 交互模式</a>
   <ul class="collapse">
-<li><a href="#live-browser-mode" id="toc-live-browser-mode" class="nav-link" data-scroll-target="#live-browser-mode"><span class="header-section-number">5.1</span> Live Browser Mode</a></li>
-  <li><a href="#console-mode" id="toc-console-mode" class="nav-link" data-scroll-target="#console-mode"><span class="header-section-number">5.2</span> Console Mode</a></li>
+<li><a href="#%E5%AE%9E%E6%97%B6%E6%B5%8F%E8%A7%88%E5%99%A8%E6%A8%A1%E5%BC%8F" id="toc-实时浏览器模式" class="nav-link" data-scroll-target="#实时浏览器模式"><span class="header-section-number">5.1</span> 实时浏览器模式</a></li>
+  <li><a href="#%E6%8E%A7%E5%88%B6%E5%8F%B0%E6%A8%A1%E5%BC%8F" id="toc-控制台模式" class="nav-link" data-scroll-target="#控制台模式"><span class="header-section-number">5.2</span> 控制台模式</a></li>
   </ul>
 </li>
   <li>
-<a href="#advanced-usage" id="toc-advanced-usage" class="nav-link" data-scroll-target="#advanced-usage"><span class="header-section-number">6</span> Advanced Usage</a>
+<a href="#%E9%AB%98%E7%BA%A7%E7%94%A8%E6%B3%95" id="toc-高级用法" class="nav-link" data-scroll-target="#高级用法"><span class="header-section-number">6</span> 高级用法</a>
   <ul class="collapse">
-<li><a href="#using-a-system-prompt" id="toc-using-a-system-prompt" class="nav-link" data-scroll-target="#using-a-system-prompt"><span class="header-section-number">6.1</span> Using a System Prompt</a></li>
-  <li><a href="#vision-capabilities" id="toc-vision-capabilities" class="nav-link" data-scroll-target="#vision-capabilities"><span class="header-section-number">6.2</span> Vision Capabilities</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8%E7%B3%BB%E7%BB%9F%E6%8F%90%E7%A4%BA" id="toc-使用系统提示" class="nav-link" data-scroll-target="#使用系统提示"><span class="header-section-number">6.1</span> 使用系统提示</a></li>
+  <li><a href="#%E8%A7%86%E8%A7%89%E8%83%BD%E5%8A%9B" id="toc-视觉能力" class="nav-link" data-scroll-target="#视觉能力"><span class="header-section-number">6.2</span> 视觉能力</a></li>
   </ul>
 </li>
-  <li><a href="#advanced-features" id="toc-advanced-features" class="nav-link" data-scroll-target="#advanced-features"><span class="header-section-number">7</span> Advanced Features</a></li>
-  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">8</span> Conclusion</a></li>
-  <li><a href="#reference" id="toc-reference" class="nav-link" data-scroll-target="#reference"><span class="header-section-number">9</span> Reference</a></li>
+  <li><a href="#%E9%AB%98%E7%BA%A7%E5%8A%9F%E8%83%BD" id="toc-高级功能" class="nav-link" data-scroll-target="#高级功能"><span class="header-section-number">7</span> 高级功能</a></li>
+  <li><a href="#%E7%BB%93%E8%AE%BA" id="toc-结论" class="nav-link" data-scroll-target="#结论"><span class="header-section-number">8</span> 结论</a></li>
+  <li><a href="#%E5%8F%82%E8%80%83" id="toc-参考" class="nav-link" data-scroll-target="#参考"><span class="header-section-number">9</span> 参考</a></li>
   </ul></nav>
 </div>
 <!-- main -->
 <main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
 <div class="quarto-title-block"><div>
-<h1 class="title">ellmer: A Flexible LLM Framework for R</h1>
+<h1 class="title">ellmer：一个灵活的 R 语言 LLM 框架</h1>
 <button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu">
 <li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li>
 <li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li>
@@ -217,36 +217,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 </header><p><img src="https://ellmer.tidyverse.org/logo.png" class="img-fluid" width="260"></p>
-<section id="introduction-to-ellmer" class="level1" data-number="1"><h1 data-number="1">
-<span class="header-section-number">1</span> Introduction to ellmer</h1>
-<p><code>ellmer</code> is a powerful and flexible R package designed to simplify the use of large language models (LLMs). It offers support for a wide range of LLM providers and includes a rich set of features such as streaming outputs, tool/function calling, and structured data extraction. This makes it an excellent choice for integrating advanced AI capabilities into your R projects.</p>
-</section><section id="installation" class="level1" data-number="2"><h1 data-number="2">
-<span class="header-section-number">2</span> Installation</h1>
-<p>To get started, install the <code>ellmer</code> package from CRAN.</p>
+<section id="ellmer-简介" class="level1" data-number="1"><h1 data-number="1">
+<span class="header-section-number">1</span> ellmer 简介</h1>
+<p><code>ellmer</code> 是一个功能强大且灵活的 R 包，旨在简化大语言模型（LLM）的使用。 它支持广泛的 LLM 提供商，并包含丰富的功能，如流式输出、工具/函数调用和结构化数据提取。 这使其成为将先进的 AI 功能集成到您的 R 项目中的绝佳选择。</p>
+</section><section id="安装" class="level1" data-number="2"><h1 data-number="2">
+<span class="header-section-number">2</span> 安装</h1>
+<p>首先，从 CRAN 安装 <code>ellmer</code> 包。</p>
 <div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the ellmer package</span></span>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 安装 ellmer 包</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ellmer"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section><section id="getting-started" class="level1" data-number="3"><h1 data-number="3">
-<span class="header-section-number">3</span> Getting Started</h1>
-<section id="load-necessary-packages" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="load-necessary-packages">
-<span class="header-section-number">3.1</span> Load Necessary Packages</h2>
-<p>Load the <code>ellmer</code> and <code>keyring</code> packages into your R session. <code>keyring</code> is used for securely managing API keys.</p>
+</section><section id="入门指南" class="level1" data-number="3"><h1 data-number="3">
+<span class="header-section-number">3</span> 入门指南</h1>
+<section id="加载必要的包" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="加载必要的包">
+<span class="header-section-number">3.1</span> 加载必要的包</h2>
+<p>将 <code>ellmer</code> 和 <code>keyring</code> 包加载到您的 R 会话中。<code>keyring</code> 用于安全地管理 API 密钥。</p>
 <div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the required libraries</span></span>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 加载所需的库</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ellmer)</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(keyring)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section></section><section id="using-google-gemini" class="level1" data-number="4"><h1 data-number="4">
-<span class="header-section-number">4</span> Using Google Gemini</h1>
-<p>This section demonstrates how to use <code>ellmer</code> with Google’s Gemini models.</p>
-<section id="initialize-the-chat-model" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="initialize-the-chat-model">
-<span class="header-section-number">4.1</span> Initialize the Chat Model</h2>
-<p>First, create an instance of the Gemini chat model, providing your API key and specifying the model you want to use.</p>
+</section></section><section id="使用-google-gemini" class="level1" data-number="4"><h1 data-number="4">
+<span class="header-section-number">4</span> 使用 Google Gemini</h1>
+<p>本节演示如何将 <code>ellmer</code> 与 Google 的 Gemini 模型结合使用。</p>
+<section id="初始化聊天模型" class="level2" data-number="4.1"><h2 data-number="4.1" class="anchored" data-anchor-id="初始化聊天模型">
+<span class="header-section-number">4.1</span> 初始化聊天模型</h2>
+<p>首先，创建一个 Gemini 聊天模型的实例，提供您的 API 密钥并指定要使用的模型。</p>
 <div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the Google Gemini chat model</span></span>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 设置 Google Gemini 聊天模型</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>chat_gemini_model <span class="ot">&lt;-</span> <span class="fu">chat_google_gemini</span>(</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">api_key =</span> <span class="fu">key_get</span>(<span class="st">"google_ai_api_key"</span>),</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">"gemini-1.5-flash"</span></span>
@@ -255,47 +255,47 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>chat_gemini_model</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section><section id="generate-text" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="generate-text">
-<span class="header-section-number">4.2</span> Generate Text</h2>
-<p>Once the model is initialized, you can start a chat and generate text.</p>
+</section><section id="生成文本" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="生成文本">
+<span class="header-section-number">4.2</span> 生成文本</h2>
+<p>模型初始化后，您就可以开始聊天并生成文本。</p>
 <div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a response from the model</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> chat_gemini_model<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Tell me three jokes about statisticians"</span>)</span>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 从模型生成回应</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> chat_gemini_model<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"给我讲三个关于统计学家的笑话"</span>)</span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section></section><section id="interactive-modes" class="level1" data-number="5"><h1 data-number="5">
-<span class="header-section-number">5</span> Interactive Modes</h1>
-<p><code>ellmer</code> provides interactive modes for a more conversational experience.</p>
-<section id="live-browser-mode" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="live-browser-mode">
-<span class="header-section-number">5.1</span> Live Browser Mode</h2>
-<p>You can launch a web-based interface to chat with the model.</p>
+</section></section><section id="交互模式" class="level1" data-number="5"><h1 data-number="5">
+<span class="header-section-number">5</span> 交互模式</h1>
+<p><code>ellmer</code> 提供了交互模式，以获得更具对话性的体验。</p>
+<section id="实时浏览器模式" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="实时浏览器模式">
+<span class="header-section-number">5.1</span> 实时浏览器模式</h2>
+<p>您可以启动一个基于 Web 的界面与模型聊天。</p>
 <div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Open an interactive chat session in a web browser</span></span>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 在网页浏览器中打开交互式聊天会话</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">live_browser</span>(chat_gemini_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section><section id="console-mode" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="console-mode">
-<span class="header-section-number">5.2</span> Console Mode</h2>
-<p>Alternatively, you can chat with the model directly in the R console.</p>
+</section><section id="控制台模式" class="level2" data-number="5.2"><h2 data-number="5.2" class="anchored" data-anchor-id="控制台模式">
+<span class="header-section-number">5.2</span> 控制台模式</h2>
+<p>或者，您可以直接在 R 控制台中与模型聊天。</p>
 <div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Start an interactive chat session in the console</span></span>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 在控制台中启动交互式聊天会话</span></span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">live_console</span>(chat_gemini_model)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section></section><section id="advanced-usage" class="level1" data-number="6"><h1 data-number="6">
-<span class="header-section-number">6</span> Advanced Usage</h1>
-<section id="using-a-system-prompt" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="using-a-system-prompt">
-<span class="header-section-number">6.1</span> Using a System Prompt</h2>
-<p>You can provide a system prompt to guide the model’s behavior and tone.</p>
+</section></section><section id="高级用法" class="level1" data-number="6"><h1 data-number="6">
+<span class="header-section-number">6</span> 高级用法</h1>
+<section id="使用系统提示" class="level2" data-number="6.1"><h2 data-number="6.1" class="anchored" data-anchor-id="使用系统提示">
+<span class="header-section-number">6.1</span> 使用系统提示</h2>
+<p>您可以提供系统提示来引导模型的行为和语气。</p>
 <div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a system prompt</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>system_prompt <span class="ot">&lt;-</span> <span class="st">"You are an IT expert"</span></span>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 定义一个系统提示</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>system_prompt <span class="ot">&lt;-</span> <span class="st">"你是一位IT专家"</span></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>system_prompt</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the model with the system prompt</span></span>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 使用系统提示初始化模型</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>chat_gemini_model_expert <span class="ot">&lt;-</span> <span class="fu">chat_google_gemini</span>(</span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">system_prompt =</span> system_prompt,</span>
 <span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">api_key =</span> <span class="fu">key_get</span>(<span class="st">"google_ai_api_key"</span>),</span>
@@ -305,35 +305,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>chat_gemini_model_expert</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section><section id="vision-capabilities" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="vision-capabilities">
-<span class="header-section-number">6.2</span> Vision Capabilities</h2>
-<p><code>ellmer</code> also supports multi-modal models that can analyze images.</p>
+</section><section id="视觉能力" class="level2" data-number="6.2"><h2 data-number="6.2" class="anchored" data-anchor-id="视觉能力">
+<span class="header-section-number">6.2</span> 视觉能力</h2>
+<p><code>ellmer</code> 还支持可以分析图像的多模态模型。</p>
 <p><img src="images/clipboard-2594497482.jpeg" class="img-fluid"></p>
-<p>First, upload the image file to the Google API.</p>
+<p>首先，将图像文件上传到 Google API。</p>
 <div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Upload an image file</span></span>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 上传一个图像文件</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">google_upload</span>(</span>
 <span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">"coffee.jpeg"</span>,</span>
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">api_key =</span> <span class="fu">key_get</span>(<span class="st">"google_ai_api_key"</span>)</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<p>Then, you can ask the model to describe or analyze the image.</p>
+<p>然后，您可以要求模型描述或分析该图像。</p>
 <div class="cell">
-<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Ask the model to summarize the content of the image</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>chat_gemini_model<span class="sc">$</span><span class="fu">chat</span>(file, <span class="st">"Give me a three-paragraph summary of this"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 要求模型总结图像内容</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>chat_gemini_model<span class="sc">$</span><span class="fu">chat</span>(file, <span class="st">"请用三段话总结一下这张图片的内容"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-</section></section><section id="advanced-features" class="level1" data-number="7"><h1 data-number="7">
-<span class="header-section-number">7</span> Advanced Features</h1>
-<p><code>ellmer</code> also supports more advanced features like structured output and tool calling, which allow for more complex and powerful applications.</p>
-</section><section id="conclusion" class="level1" data-number="8"><h1 data-number="8">
-<span class="header-section-number">8</span> Conclusion</h1>
-<p><code>ellmer</code> is a comprehensive and user-friendly R package for working with large language models. Its wide range of features, support for multiple providers, and ease of use make it an invaluable tool for R users who want to incorporate the power of LLMs into their data analysis and applications.</p>
-</section><section id="reference" class="level1" data-number="9"><h1 data-number="9">
-<span class="header-section-number">9</span> Reference</h1>
+</section></section><section id="高级功能" class="level1" data-number="7"><h1 data-number="7">
+<span class="header-section-number">7</span> 高级功能</h1>
+<p><code>ellmer</code> 还支持更高级的功能，如结构化输出和工具调用，这些功能可以实现更复杂、更强大的应用程序。</p>
+</section><section id="结论" class="level1" data-number="8"><h1 data-number="8">
+<span class="header-section-number">8</span> 结论</h1>
+<p><code>ellmer</code> 是一个全面且用户友好的 R 包，用于处理大语言模型。其广泛的功能、对多个提供商的支持以及易用性，使其成为希望将 LLM 的强大功能融入其数据分析和应用程序的 R 用户的宝贵工具。</p>
+</section><section id="参考" class="level1" data-number="9"><h1 data-number="9">
+<span class="header-section-number">9</span> 参考</h1>
 <ul>
-<li><a href="https://ellmer.tidyverse.org/">ellmer Website</a></li>
+<li><a href="https://ellmer.tidyverse.org/">ellmer 网站</a></li>
 </ul>
 <!-- --></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
@@ -962,7 +962,7 @@ function loadGiscusWhenReady() {
     script.dataset.repo = "JCfly3000/into_AI";
     script.dataset.repoId = "R_kgDOOzm3aQ";
     script.dataset.category = "General";
-    script.dataset.categoryId = "";
+    script.dataset.categoryId = "DIC_kwDOOzm3ac4Cq13w";
     script.dataset.mapping = "title";
     script.dataset.reactionsEnabled = "1";
     script.dataset.emitMetadata = "0";
@@ -999,7 +999,7 @@ loadGiscusWhenReady();
 </div>
 <div class="modal-body"><div class="">
 <div class="sourceCode" id="cb11" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "ellmer: A Flexible LLM Framework for R"</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "ellmer：一个灵活的 R 语言 LLM 框架"</span></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="an">execute:</span></span>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co">  warning: false</span></span>
@@ -1019,143 +1019,141 @@ loadGiscusWhenReady();
 <span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a><span class="al">![](https://ellmer.tidyverse.org/logo.png)</span>{width="260"}</span>
 <span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="fu"># Introduction to ellmer</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a><span class="fu"># ellmer 简介</span></span>
 <span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="in">`ellmer`</span> is a powerful and flexible R package designed to simplify the use of large language models (LLMs). It offers support for a wide range of LLM providers and includes a rich set of features such as streaming outputs, tool/function calling, and structured data extraction. This makes it an excellent choice for integrating advanced AI capabilities into your R projects.</span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a><span class="in">`ellmer`</span> 是一个功能强大且灵活的 R 包，旨在简化大语言模型（LLM）的使用。 它支持广泛的 LLM 提供商，并包含丰富的功能，如流式输出、工具/函数调用和结构化数据提取。 这使其成为将先进的 AI 功能集成到您的 R 项目中的绝佳选择。</span>
 <span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a><span class="fu"># 安装</span></span>
 <span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a><span class="fu"># Installation</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>首先，从 CRAN 安装 <span class="in">`ellmer`</span> 包。</span>
 <span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>To get started, install the <span class="in">`ellmer`</span> package from CRAN.</span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the ellmer package</span></span>
-<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ellmer"</span>)</span>
-<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a><span class="co"># 安装 ellmer 包</span></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"ellmer"</span>)</span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a><span class="fu"># 入门指南</span></span>
 <span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a><span class="fu"># Getting Started</span></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a><span class="fu">## 加载必要的包</span></span>
 <span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a><span class="fu">## Load Necessary Packages</span></span>
+<span id="cb11-42"><a href="#cb11-42" aria-hidden="true" tabindex="-1"></a>将 <span class="in">`ellmer`</span> 和 <span class="in">`keyring`</span> 包加载到您的 R 会话中。<span class="in">`keyring`</span> 用于安全地管理 API 密钥。</span>
 <span id="cb11-43"><a href="#cb11-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-44"><a href="#cb11-44" aria-hidden="true" tabindex="-1"></a>Load the <span class="in">`ellmer`</span> and <span class="in">`keyring`</span> packages into your R session. <span class="in">`keyring`</span> is used for securely managing API keys.</span>
-<span id="cb11-45"><a href="#cb11-45" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the required libraries</span></span>
-<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ellmer)</span>
-<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(keyring)</span>
-<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-46"><a href="#cb11-46" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-47"><a href="#cb11-47" aria-hidden="true" tabindex="-1"></a><span class="co"># 加载所需的库</span></span>
+<span id="cb11-48"><a href="#cb11-48" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ellmer)</span>
+<span id="cb11-49"><a href="#cb11-49" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(keyring)</span>
+<span id="cb11-50"><a href="#cb11-50" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-51"><a href="#cb11-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-52"><a href="#cb11-52" aria-hidden="true" tabindex="-1"></a><span class="fu"># 使用 Google Gemini</span></span>
 <span id="cb11-53"><a href="#cb11-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a><span class="fu"># Using Google Gemini</span></span>
+<span id="cb11-54"><a href="#cb11-54" aria-hidden="true" tabindex="-1"></a>本节演示如何将 <span class="in">`ellmer`</span> 与 Google 的 Gemini 模型结合使用。</span>
 <span id="cb11-55"><a href="#cb11-55" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a>This section demonstrates how to use <span class="in">`ellmer`</span> with Google's Gemini models.</span>
+<span id="cb11-56"><a href="#cb11-56" aria-hidden="true" tabindex="-1"></a><span class="fu">## 初始化聊天模型</span></span>
 <span id="cb11-57"><a href="#cb11-57" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a><span class="fu">## Initialize the Chat Model</span></span>
+<span id="cb11-58"><a href="#cb11-58" aria-hidden="true" tabindex="-1"></a>首先，创建一个 Gemini 聊天模型的实例，提供您的 API 密钥并指定要使用的模型。</span>
 <span id="cb11-59"><a href="#cb11-59" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-60"><a href="#cb11-60" aria-hidden="true" tabindex="-1"></a>First, create an instance of the Gemini chat model, providing your API key and specifying the model you want to use.</span>
-<span id="cb11-61"><a href="#cb11-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a><span class="co"># Set up the Google Gemini chat model</span></span>
-<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a>chat_gemini_model <span class="ot">&lt;-</span> <span class="fu">chat_google_gemini</span>(</span>
-<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a>  <span class="at">api_key =</span> <span class="fu">key_get</span>(<span class="st">"google_ai_api_key"</span>),</span>
-<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">"gemini-1.5-flash"</span></span>
-<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a>chat_gemini_model</span>
-<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-62"><a href="#cb11-62" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-63"><a href="#cb11-63" aria-hidden="true" tabindex="-1"></a><span class="co"># 设置 Google Gemini 聊天模型</span></span>
+<span id="cb11-64"><a href="#cb11-64" aria-hidden="true" tabindex="-1"></a>chat_gemini_model <span class="ot">&lt;-</span> <span class="fu">chat_google_gemini</span>(</span>
+<span id="cb11-65"><a href="#cb11-65" aria-hidden="true" tabindex="-1"></a>  <span class="at">api_key =</span> <span class="fu">key_get</span>(<span class="st">"google_ai_api_key"</span>),</span>
+<span id="cb11-66"><a href="#cb11-66" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">"gemini-1.5-flash"</span></span>
+<span id="cb11-67"><a href="#cb11-67" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-68"><a href="#cb11-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-69"><a href="#cb11-69" aria-hidden="true" tabindex="-1"></a>chat_gemini_model</span>
+<span id="cb11-70"><a href="#cb11-70" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-71"><a href="#cb11-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-72"><a href="#cb11-72" aria-hidden="true" tabindex="-1"></a><span class="fu">## 生成文本</span></span>
 <span id="cb11-73"><a href="#cb11-73" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a><span class="fu">## Generate Text</span></span>
+<span id="cb11-74"><a href="#cb11-74" aria-hidden="true" tabindex="-1"></a>模型初始化后，您就可以开始聊天并生成文本。</span>
 <span id="cb11-75"><a href="#cb11-75" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-76"><a href="#cb11-76" aria-hidden="true" tabindex="-1"></a>Once the model is initialized, you can start a chat and generate text.</span>
-<span id="cb11-77"><a href="#cb11-77" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a><span class="co"># Generate a response from the model</span></span>
-<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> chat_gemini_model<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"Tell me three jokes about statisticians"</span>)</span>
-<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a>result</span>
-<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-78"><a href="#cb11-78" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-79"><a href="#cb11-79" aria-hidden="true" tabindex="-1"></a><span class="co"># 从模型生成回应</span></span>
+<span id="cb11-80"><a href="#cb11-80" aria-hidden="true" tabindex="-1"></a>result <span class="ot">&lt;-</span> chat_gemini_model<span class="sc">$</span><span class="fu">chat</span>(<span class="st">"给我讲三个关于统计学家的笑话"</span>)</span>
+<span id="cb11-81"><a href="#cb11-81" aria-hidden="true" tabindex="-1"></a>result</span>
+<span id="cb11-82"><a href="#cb11-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-83"><a href="#cb11-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-84"><a href="#cb11-84" aria-hidden="true" tabindex="-1"></a><span class="fu"># 交互模式</span></span>
 <span id="cb11-85"><a href="#cb11-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a><span class="fu"># Interactive Modes</span></span>
+<span id="cb11-86"><a href="#cb11-86" aria-hidden="true" tabindex="-1"></a><span class="in">`ellmer`</span> 提供了交互模式，以获得更具对话性的体验。</span>
 <span id="cb11-87"><a href="#cb11-87" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a><span class="in">`ellmer`</span> provides interactive modes for a more conversational experience.</span>
+<span id="cb11-88"><a href="#cb11-88" aria-hidden="true" tabindex="-1"></a><span class="fu">## 实时浏览器模式</span></span>
 <span id="cb11-89"><a href="#cb11-89" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a><span class="fu">## Live Browser Mode</span></span>
+<span id="cb11-90"><a href="#cb11-90" aria-hidden="true" tabindex="-1"></a>您可以启动一个基于 Web 的界面与模型聊天。</span>
 <span id="cb11-91"><a href="#cb11-91" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-92"><a href="#cb11-92" aria-hidden="true" tabindex="-1"></a>You can launch a web-based interface to chat with the model.</span>
-<span id="cb11-93"><a href="#cb11-93" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a><span class="co"># Open an interactive chat session in a web browser</span></span>
-<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a><span class="fu">live_browser</span>(chat_gemini_model)</span>
-<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-94"><a href="#cb11-94" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-95"><a href="#cb11-95" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb11-96"><a href="#cb11-96" aria-hidden="true" tabindex="-1"></a><span class="co"># 在网页浏览器中打开交互式聊天会话</span></span>
+<span id="cb11-97"><a href="#cb11-97" aria-hidden="true" tabindex="-1"></a><span class="fu">live_browser</span>(chat_gemini_model)</span>
+<span id="cb11-98"><a href="#cb11-98" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-99"><a href="#cb11-99" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-100"><a href="#cb11-100" aria-hidden="true" tabindex="-1"></a><span class="fu">## 控制台模式</span></span>
 <span id="cb11-101"><a href="#cb11-101" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a><span class="fu">## Console Mode</span></span>
+<span id="cb11-102"><a href="#cb11-102" aria-hidden="true" tabindex="-1"></a>或者，您可以直接在 R 控制台中与模型聊天。</span>
 <span id="cb11-103"><a href="#cb11-103" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-104"><a href="#cb11-104" aria-hidden="true" tabindex="-1"></a>Alternatively, you can chat with the model directly in the R console.</span>
-<span id="cb11-105"><a href="#cb11-105" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
-<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a><span class="co"># Start an interactive chat session in the console</span></span>
-<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a><span class="fu">live_console</span>(chat_gemini_model)</span>
-<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-106"><a href="#cb11-106" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-107"><a href="#cb11-107" aria-hidden="true" tabindex="-1"></a><span class="co">#| eval: false</span></span>
+<span id="cb11-108"><a href="#cb11-108" aria-hidden="true" tabindex="-1"></a><span class="co"># 在控制台中启动交互式聊天会话</span></span>
+<span id="cb11-109"><a href="#cb11-109" aria-hidden="true" tabindex="-1"></a><span class="fu">live_console</span>(chat_gemini_model)</span>
+<span id="cb11-110"><a href="#cb11-110" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-111"><a href="#cb11-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-112"><a href="#cb11-112" aria-hidden="true" tabindex="-1"></a><span class="fu"># 高级用法</span></span>
 <span id="cb11-113"><a href="#cb11-113" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a><span class="fu"># Advanced Usage</span></span>
+<span id="cb11-114"><a href="#cb11-114" aria-hidden="true" tabindex="-1"></a><span class="fu">## 使用系统提示</span></span>
 <span id="cb11-115"><a href="#cb11-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a><span class="fu">## Using a System Prompt</span></span>
+<span id="cb11-116"><a href="#cb11-116" aria-hidden="true" tabindex="-1"></a>您可以提供系统提示来引导模型的行为和语气。</span>
 <span id="cb11-117"><a href="#cb11-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-118"><a href="#cb11-118" aria-hidden="true" tabindex="-1"></a>You can provide a system prompt to guide the model's behavior and tone.</span>
-<span id="cb11-119"><a href="#cb11-119" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a><span class="co"># Define a system prompt</span></span>
-<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a>system_prompt <span class="ot">&lt;-</span> <span class="st">"You are an IT expert"</span></span>
-<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a>system_prompt</span>
-<span id="cb11-126"><a href="#cb11-126" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb11-127"><a href="#cb11-127" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize the model with the system prompt</span></span>
-<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a>chat_gemini_model_expert <span class="ot">&lt;-</span> <span class="fu">chat_google_gemini</span>(</span>
-<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a>  <span class="at">system_prompt =</span> system_prompt,</span>
-<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a>  <span class="at">api_key =</span> <span class="fu">key_get</span>(<span class="st">"google_ai_api_key"</span>),</span>
-<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">"gemini-1.5-flash"</span></span>
-<span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a>chat_gemini_model_expert</span>
-<span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-120"><a href="#cb11-120" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-121"><a href="#cb11-121" aria-hidden="true" tabindex="-1"></a><span class="co"># 定义一个系统提示</span></span>
+<span id="cb11-122"><a href="#cb11-122" aria-hidden="true" tabindex="-1"></a>system_prompt <span class="ot">&lt;-</span> <span class="st">"你是一位IT专家"</span></span>
+<span id="cb11-123"><a href="#cb11-123" aria-hidden="true" tabindex="-1"></a>system_prompt</span>
+<span id="cb11-124"><a href="#cb11-124" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-125"><a href="#cb11-125" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-128"><a href="#cb11-128" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-129"><a href="#cb11-129" aria-hidden="true" tabindex="-1"></a><span class="co"># 使用系统提示初始化模型</span></span>
+<span id="cb11-130"><a href="#cb11-130" aria-hidden="true" tabindex="-1"></a>chat_gemini_model_expert <span class="ot">&lt;-</span> <span class="fu">chat_google_gemini</span>(</span>
+<span id="cb11-131"><a href="#cb11-131" aria-hidden="true" tabindex="-1"></a>  <span class="at">system_prompt =</span> system_prompt,</span>
+<span id="cb11-132"><a href="#cb11-132" aria-hidden="true" tabindex="-1"></a>  <span class="at">api_key =</span> <span class="fu">key_get</span>(<span class="st">"google_ai_api_key"</span>),</span>
+<span id="cb11-133"><a href="#cb11-133" aria-hidden="true" tabindex="-1"></a>  <span class="at">model =</span> <span class="st">"gemini-1.5-flash"</span></span>
+<span id="cb11-134"><a href="#cb11-134" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-135"><a href="#cb11-135" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-136"><a href="#cb11-136" aria-hidden="true" tabindex="-1"></a>chat_gemini_model_expert</span>
+<span id="cb11-137"><a href="#cb11-137" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-138"><a href="#cb11-138" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-139"><a href="#cb11-139" aria-hidden="true" tabindex="-1"></a><span class="fu">## 视觉能力</span></span>
 <span id="cb11-140"><a href="#cb11-140" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a><span class="fu">## Vision Capabilities</span></span>
+<span id="cb11-141"><a href="#cb11-141" aria-hidden="true" tabindex="-1"></a><span class="in">`ellmer`</span> 还支持可以分析图像的多模态模型。</span>
 <span id="cb11-142"><a href="#cb11-142" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a><span class="in">`ellmer`</span> also supports multi-modal models that can analyze images.</span>
+<span id="cb11-143"><a href="#cb11-143" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-2594497482.jpeg)</span></span>
 <span id="cb11-144"><a href="#cb11-144" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a><span class="al">![](images/clipboard-2594497482.jpeg)</span></span>
+<span id="cb11-145"><a href="#cb11-145" aria-hidden="true" tabindex="-1"></a>首先，将图像文件上传到 Google API。</span>
 <span id="cb11-146"><a href="#cb11-146" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-147"><a href="#cb11-147" aria-hidden="true" tabindex="-1"></a>First, upload the image file to the Google API.</span>
-<span id="cb11-148"><a href="#cb11-148" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a><span class="co"># Upload an image file</span></span>
-<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">google_upload</span>(</span>
-<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">"coffee.jpeg"</span>,</span>
-<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a>  <span class="at">api_key =</span> <span class="fu">key_get</span>(<span class="st">"google_ai_api_key"</span>)</span>
-<span id="cb11-156"><a href="#cb11-156" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb11-157"><a href="#cb11-157" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-149"><a href="#cb11-149" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-150"><a href="#cb11-150" aria-hidden="true" tabindex="-1"></a><span class="co"># 上传一个图像文件</span></span>
+<span id="cb11-151"><a href="#cb11-151" aria-hidden="true" tabindex="-1"></a>file <span class="ot">&lt;-</span> <span class="fu">google_upload</span>(</span>
+<span id="cb11-152"><a href="#cb11-152" aria-hidden="true" tabindex="-1"></a>  <span class="at">path =</span> <span class="st">"coffee.jpeg"</span>,</span>
+<span id="cb11-153"><a href="#cb11-153" aria-hidden="true" tabindex="-1"></a>  <span class="at">api_key =</span> <span class="fu">key_get</span>(<span class="st">"google_ai_api_key"</span>)</span>
+<span id="cb11-154"><a href="#cb11-154" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb11-155"><a href="#cb11-155" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-156"><a href="#cb11-156" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-157"><a href="#cb11-157" aria-hidden="true" tabindex="-1"></a>然后，您可以要求模型描述或分析该图像。</span>
 <span id="cb11-158"><a href="#cb11-158" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-159"><a href="#cb11-159" aria-hidden="true" tabindex="-1"></a>Then, you can ask the model to describe or analyze the image.</span>
-<span id="cb11-160"><a href="#cb11-160" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
-<span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a><span class="co"># Ask the model to summarize the content of the image</span></span>
-<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a>chat_gemini_model<span class="sc">$</span><span class="fu">chat</span>(file, <span class="st">"Give me a three-paragraph summary of this"</span>)</span>
-<span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-161"><a href="#cb11-161" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb11-162"><a href="#cb11-162" aria-hidden="true" tabindex="-1"></a><span class="co"># 要求模型总结图像内容</span></span>
+<span id="cb11-163"><a href="#cb11-163" aria-hidden="true" tabindex="-1"></a>chat_gemini_model<span class="sc">$</span><span class="fu">chat</span>(file, <span class="st">"请用三段话总结一下这张图片的内容"</span>)</span>
+<span id="cb11-164"><a href="#cb11-164" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb11-165"><a href="#cb11-165" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-166"><a href="#cb11-166" aria-hidden="true" tabindex="-1"></a><span class="fu"># 高级功能</span></span>
 <span id="cb11-167"><a href="#cb11-167" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a><span class="fu"># Advanced Features</span></span>
+<span id="cb11-168"><a href="#cb11-168" aria-hidden="true" tabindex="-1"></a><span class="in">`ellmer`</span> 还支持更高级的功能，如结构化输出和工具调用，这些功能可以实现更复杂、更强大的应用程序。</span>
 <span id="cb11-169"><a href="#cb11-169" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a><span class="in">`ellmer`</span> also supports more advanced features like structured output and tool calling, which allow for more complex and powerful applications.</span>
+<span id="cb11-170"><a href="#cb11-170" aria-hidden="true" tabindex="-1"></a><span class="fu"># 结论</span></span>
 <span id="cb11-171"><a href="#cb11-171" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a><span class="fu"># Conclusion</span></span>
+<span id="cb11-172"><a href="#cb11-172" aria-hidden="true" tabindex="-1"></a><span class="in">`ellmer`</span> 是一个全面且用户友好的 R 包，用于处理大语言模型。其广泛的功能、对多个提供商的支持以及易用性，使其成为希望将 LLM 的强大功能融入其数据分析和应用程序的 R 用户的宝贵工具。</span>
 <span id="cb11-173"><a href="#cb11-173" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a><span class="in">`ellmer`</span> is a comprehensive and user-friendly R package for working with large language models. Its wide range of features, support for multiple providers, and ease of use make it an invaluable tool for R users who want to incorporate the power of LLMs into their data analysis and applications.</span>
+<span id="cb11-174"><a href="#cb11-174" aria-hidden="true" tabindex="-1"></a><span class="fu"># 参考</span></span>
 <span id="cb11-175"><a href="#cb11-175" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a><span class="fu"># Reference</span></span>
-<span id="cb11-177"><a href="#cb11-177" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-178"><a href="#cb11-178" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">ellmer Website</span><span class="co">](https://ellmer.tidyverse.org/)</span></span>
+<span id="cb11-176"><a href="#cb11-176" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="co">[</span><span class="ot">ellmer 网站</span><span class="co">](https://ellmer.tidyverse.org/)</span></span>
 </code><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></pre></div>
 </div></div>
 </div></div></div>

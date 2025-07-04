@@ -1,30 +1,268 @@
 [
   {
+    "objectID": "Ollama.html",
+    "href": "Ollama.html",
+    "title": "Ollama LLM Package for R",
+    "section": "",
+    "text": "Ollama is a powerful tool that allows you to run large language models (LLMs) locally on your own computer. This provides privacy and offline capabilities. The ollamar R package provides a simple and intuitive interface to interact with Ollama, making it easy to leverage the power of LLMs within your R projects.\nThis document provides a hands-on guide to using the ollamar package for various tasks, including text generation and image analysis."
+  },
+  {
+    "objectID": "Ollama.html#download-and-run-ollama",
+    "href": "Ollama.html#download-and-run-ollama",
+    "title": "Ollama LLM Package for R",
+    "section": "2.1 Download and Run Ollama",
+    "text": "2.1 Download and Run Ollama\nBefore using the package, ensure you have downloaded the latest version of Ollama and that it is running on your local computer. You can download it from the official Ollama website."
+  },
+  {
+    "objectID": "Ollama.html#test-connection",
+    "href": "Ollama.html#test-connection",
+    "title": "Ollama LLM Package for R",
+    "section": "2.2 Test Connection",
+    "text": "2.2 Test Connection\nOnce Ollama is running, you can test the connection from R to ensure everything is set up correctly.\n\n\nCode\n# Test the connection to Ollama\ntest_connection()"
+  },
+  {
+    "objectID": "Ollama.html#list-downloaded-models",
+    "href": "Ollama.html#list-downloaded-models",
+    "title": "Ollama LLM Package for R",
+    "section": "3.1 List Downloaded Models",
+    "text": "3.1 List Downloaded Models\nYou can list all the models that you have downloaded and are available locally.\n\n\nCode\n# List all locally available models\nollamar::list_models()"
+  },
+  {
+    "objectID": "Ollama.html#download-a-new-model",
+    "href": "Ollama.html#download-a-new-model",
+    "title": "Ollama LLM Package for R",
+    "section": "3.2 Download a New Model",
+    "text": "3.2 Download a New Model\nYou can easily download new models from the Ollama library. Here, we download the gemma:2b model, which is suitable for both text and image-related tasks.\n\n\nCode\n# Download the gemma:2b model\nollamar::pull(\"gemma:2b\")\n\n\nYou can also view the details of a model. ::: {.cell}\n\nCode\n# Show model information\n#ollamar::show(\"gemma:2b\")\n\n:::"
+  },
+  {
+    "objectID": "Ollama.html#delete-a-model",
+    "href": "Ollama.html#delete-a-model",
+    "title": "Ollama LLM Package for R",
+    "section": "3.3 Delete a Model",
+    "text": "3.3 Delete a Model\nIf you no longer need a model, you can delete it to free up space.\n\n\nCode\n# Delete a model by name and tag\ndelete(\"gemma:latest\")"
+  },
+  {
+    "objectID": "Ollama.html#run-a-text-model",
+    "href": "Ollama.html#run-a-text-model",
+    "title": "Ollama LLM Package for R",
+    "section": "4.1 Run a Text Model",
+    "text": "4.1 Run a Text Model\nYou can use the generate function to interact with a text-based model.\n\n4.1.1 Using the gemma:2b model\n\n\nCode\n# Generate a short story using the gemma:2b model\n# The 'output = \"text\"' argument simplifies the output to a character string.\ntxt &lt;- generate(\"gemma:2b\", \"Tell me a 50-word story\", output = \"text\")\ntxt"
+  },
+  {
+    "objectID": "Ollama.html#run-an-image-model",
+    "href": "Ollama.html#run-an-image-model",
+    "title": "Ollama LLM Package for R",
+    "section": "4.2 Run an Image Model",
+    "text": "4.2 Run an Image Model\nModern multi-modal models can also analyze images.\n\n\n\nCode\n# Define the path to the image\nimage_path &lt;- \"coffee.jpeg\"\n# Ask the model to describe the image\nresult &lt;- generate(\"gemma:2b\", \"What is in the image?\", images = image_path)\n# Process the response to extract the text\nresp_process(result, \"text\")\n\n\nYou can ask more specific questions about the image.\n\n\nCode\n# Ask about the number of coffees in the image\nresult &lt;- generate(\"gemma:2b\", \"How many coffees are in this image?\", images = image_path)\nresp_process(result, \"text\")\n\n\n\n\nCode\n# Ask about the main color of the image\nresult &lt;- generate(\"gemma:2b\", \"What is the main color of this image?\", images = image_path)\nresp_process(result, \"text\")\n\n\n\n\nCode\n# Perform content moderation\nresult &lt;- generate(\"gemma:2b\", \"Is there any adult content in this image?\", images = image_path)\nresp_process(result, \"text\")"
+  },
+  {
     "objectID": "chatlas.html",
     "href": "chatlas.html",
-    "title": "chatlas LLM pacakge for Python",
+    "title": "Chatlas: A Unified LLM Interface for Python",
     "section": "",
-    "text": "chatlas provides a simple and unified interface across large language model (llm) providers in Python.\n\n#| eval: false\npip3 install -U chatlas\npip3 install -q -U google-genai\npip3 install shiny\npip3 install keyring\n\n\nCode\nfrom chatlas import ChatGoogle,token_usage\nimport keyring\n\n\n\n1 Google gemini\n\n\nCode\nfrom chatlas import ChatGoogle\n\nchat_google_model = ChatGoogle(\n  model = \"gemini-2.0-flash\",\n  api_key=keyring.get_password(\"system\", \"google_ai_api_key\"),\n  system_prompt = \"You are a IT expert\",\n)\n\nchat_google_model\n\n\n&lt;Chat turns=1 tokens=0&gt;\n  &lt;Turn role='system'&gt;\n    &lt;ContentText text='You are a IT expert'&gt;\n\n\n\n\nCode\nresult=chat_google_model.chat(\"What preceding languages most influenced Python?\")\nresult\n\n\n\n\n\n\nPython’s design and features were influenced by a number of preceding languages. Here’s a breakdown of the most significant ones:\n\nABC: This is arguably the most influential language on Python. Guido van Rossum, Python’s creator, worked on the ABC language at the Centrum Wiskunde & Informatica (CWI) in the Netherlands. ABC was designed as a teaching language meant to be easier to use and read than languages like BASIC or Pascal. Python adopted several key features and design philosophies from ABC, including:\n\nEmphasis on readability: ABC prioritized clear syntax and indentation. Python adopted significant indentation to define code blocks, a direct carryover from ABC.\nHigh-level data structures: ABC provided built-in support for data structures like lists and dictionaries, which are also core to Python.\nInteractive interpreter: ABC had an interactive interpreter, which inspired Python’s interactive mode.\nElimination of unnecessary syntax: ABC tried to minimize the number of keywords and special symbols. Python aimed for a similar simplicity.\n\nModula-3: This language influenced Python’s module system, exception handling, and some aspects of object-oriented programming.\nC: Python’s implementation (CPython, the most common implementation) is written in C. C’s influence is seen in:\n\nLow-level memory management: Python relies on C’s memory management capabilities.\nExtension modules: Python can be extended with C modules, allowing it to interface with existing C libraries and improve performance in certain areas.\nSyntax: Some of Python’s syntax, especially in areas like operators and expressions, resembles C.\n\nAlgol 68: This language influenced some of Python’s features.\nSmalltalk: This object-oriented language influenced Python’s object model.\n\nIn Summary:\n\n\n\n\n\n\n\nLanguage\nInfluence\n\n\n\n\nABC\nReadability, indentation, high-level data structures, interactive interpreter, simplicity\n\n\nModula-3\nModule system, exception handling, object-oriented programming\n\n\nC\nImplementation language, memory management, extension modules, some syntax\n\n\nAlgol 68\n\n\n\nSmalltalk\nObject model\n\n\n\nWhile other languages might have had minor influences, ABC, Modula-3, and C were the most important in shaping Python into the language it is today. The influence of ABC is particularly noteworthy because it shaped Python’s core philosophy of readability and ease of use.\n\n\n&lt;chatlas._chat.ChatResponse at 0x119f98c20&gt;\n\n\n\n\n2 Interactive mode\n\n\nCode\n#chat_google_model.app()\n\n\n\n\n3 console mode\n\n\nCode\n#chat_google_model.console()\n\n\n\n\n4 vision\n\n\n5 structured output\n\n\n6 tool calling\n\n\n\n7 reference\nhttps://ellmer.tidyverse.org/"
+    "text": "chatlas is a Python package that provides a simple and unified interface for interacting with various large language model (LLM) providers. This allows you to switch between different models and providers with minimal code changes, streamlining your workflow.\nThis document demonstrates how to use chatlas to connect to Google’s Gemini models, perform text generation, and analyze images."
+  },
+  {
+    "objectID": "chatlas.html#token-counting",
+    "href": "chatlas.html#token-counting",
+    "title": "Chatlas: A Unified LLM Interface for Python",
+    "section": "3.1 Token Counting",
+    "text": "3.1 Token Counting\nYou can count the number of tokens in a given text before sending it to the model. This is useful for managing costs and staying within model limits.\n\n\nCode\n# Count the tokens in a prompt\nchat_google_model.token_count(\"What preceding languages most influenced Python?\")"
+  },
+  {
+    "objectID": "chatlas.html#text-generation",
+    "href": "chatlas.html#text-generation",
+    "title": "Chatlas: A Unified LLM Interface for Python",
+    "section": "3.2 Text Generation",
+    "text": "3.2 Text Generation\nNow, let’s generate a response from the model.\n\n\nCode\n# Send a prompt to the model and get a response\nresult = chat_google_model.chat(\"What preceding languages most influenced Python?\")\nresult"
+  },
+  {
+    "objectID": "chatlas.html#web-application",
+    "href": "chatlas.html#web-application",
+    "title": "Chatlas: A Unified LLM Interface for Python",
+    "section": "4.1 Web Application",
+    "text": "4.1 Web Application\nYou can launch a web-based chat application.\n\n\nCode\n# Launch the interactive web app\nchat_google_model.app()"
+  },
+  {
+    "objectID": "chatlas.html#console-mode",
+    "href": "chatlas.html#console-mode",
+    "title": "Chatlas: A Unified LLM Interface for Python",
+    "section": "4.2 Console Mode",
+    "text": "4.2 Console Mode\nAlternatively, you can chat with the model directly in your console.\n\n\nCode\n# Start an interactive console session\nchat_google_model.console()"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "AI handbook",
+    "title": "AI Handbook",
     "section": "",
-    "text": "This is a Quarto website.\n\nIn to R\n\n\nR model\n\n\nIn to Python\n\n\nPyhton model"
+    "text": "Welcome to the AI Handbook, a comprehensive resource for developers and data scientists looking to harness the power of Artificial Intelligence. This Quarto-based website provides a curated collection of tutorials, guides, and practical examples for using a variety of AI tools and models in both R and Python.\nOur mission is to make AI more accessible and easier to integrate into your projects. Whether you are just beginning your journey into AI or are an experienced practitioner, you will find valuable information here to help you advance your skills.\nThis handbook covers a wide range of topics, including:\n\nFundamental AI Concepts: Clear explanations of core concepts such as AI Agents, the Model-Controller-Parser (MCP) design pattern, and Retrieval-Augmented Generation (RAG).\nR Packages for AI: In-depth tutorials on popular R packages like ellmer, chattr, and ollamar for seamless integration of large language models (LLMs) into your R workflows.\nPython Libraries for AI: Practical guides on using Python libraries such as chatlas for a unified experience with different LLM providers, and mlx-lm for high-performance model execution on Apple silicon.\nCommand-Line Tools: Instructions on how to use command-line interfaces like the gemini-cli to interact with powerful models like Google’s Gemini directly from your terminal.\n\nWe invite you to explore the different sections of this handbook to discover the latest in AI technology and learn how to apply it to your own projects. With a focus on hands-on learning and practical application, the AI Handbook is your go-to guide for navigating the exciting world of Artificial Intelligence."
   },
   {
-    "objectID": "chattr.html",
-    "href": "chattr.html",
-    "title": "chattr interface LLM pacakge for Rstudio/Positron",
-    "section": "",
-    "text": "chattr is an interface to LLMs (Large Language Models). It enables interaction with the model directly from RStudio and Positron. chattr allows you to submit a prompt to the LLM from your script, or by using the provided Shiny Gadget.\n\n\n1 install package\n\n\nCode\npak::pak(\"mlverse/chattr\")\n\n\n\n\n2 Load package\n\n\nCode\nlibrary(chattr)\n\n\n\n\n3 Use package\n\n\nCode\n#copilot do not need OpenAI_API_KEY\nmy_chat &lt;- ellmer::chat_github(model = \"gpt-4o\")\nchattr_use(my_chat)\n\n\n\n\n4 using LLM as app\n\n\nCode\n#chattr_app()\n\n\n\n\n5 using LLM on code\n\n\nCode\nchattr(\"what is your name?\")\n\n\n# I am an R coding assistant, here to help with tidyverse and tidymodels tasks.\n\n\n\n\nCode\nchattr_history=ch_history()\nprint(chattr_history)\n\n\n\n\n6 save history\n\n\nCode\nchat_file &lt;- tempfile()\nsaveRDS(ch_history(), \"chat_history.rds\")\n\n\n\n\n7 clear history\n\n\nCode\nprint(ch_history(list()))\n\n\n\n\n8 Re-load history\n\n\nCode\nchattr_history=ch_history(readRDS(\"chat_history.rds\"))\nprint(chattr_history)\n\n\n\n\n9 reference\nhttps://mlverse.github.io/chattr/\nhttps://github.com/mlverse/chattr"
+    "objectID": "gemini.html#upgrading-the-gemini-cli",
+    "href": "gemini.html#upgrading-the-gemini-cli",
+    "title": "Getting Started with the Gemini CLI",
+    "section": "3.1 Upgrading the Gemini CLI",
+    "text": "3.1 Upgrading the Gemini CLI\nTo ensure you have the latest features and bug fixes, you can upgrade the package from time to time.\n\n\nCode\n# Upgrade the Gemini CLI to the latest version\nnpm upgrade -g @google/gemini-cli"
   },
   {
-    "objectID": "ellmer.html",
-    "href": "ellmer.html",
-    "title": "ellmer LLM pacakge for R",
+    "objectID": "gemini.html#login-with-your-google-account",
+    "href": "gemini.html#login-with-your-google-account",
+    "title": "Getting Started with the Gemini CLI",
+    "section": "4.1 Login with Your Google Account",
+    "text": "4.1 Login with Your Google Account\nYou can either log in with your Google Cloud account or use an API key.\n\n4.1.1 Option 1: Login with Google Cloud Account\n\n\nCode\n# Set your Google Cloud project ID\nexport GOOGLE_CLOUD_PROJECT=\"your-google-cloud-project-id\"\n\n\nor save the GOOGLE_CLOUD_PROJECT into environment variable.So that do not need to re enter everytime\n\n4.1.1.1 check using zsh or bash\n\n\nCode\necho $SHELL\n\n\n\n\n4.1.1.2 for zsh\n\n\nCode\necho 'export GOOGLE_CLOUD_PROJECT=\"your-google-cloud-project-id\"' &gt;&gt; ~/.zshrc\n\nsource ~/.zshrc\n\n\n\n\n4.1.1.3 for bash\n\n\nCode\necho 'export GOOGLE_CLOUD_PROJECT=\"your-google-cloud-project-id\"' &gt;&gt; ~/.bashrc\n\nsource ~/.bashrc\n\n\n\n\n4.1.1.4 check wheather added or not\n\n\nCode\necho $GOOGLE_CLOUD_PROJECT\n\n\n\n\n\n4.1.2 Option 2: Login with API Key\nAlternatively, you can use an API key for authentication.\n\n\nCode\n# Set your Gemini API key as an environment variable\nexport GEMINI_API_KEY=\"your-gemini-api-key\""
+  },
+  {
+    "objectID": "gemini.html#set-the-location",
+    "href": "gemini.html#set-the-location",
+    "title": "Getting Started with the Gemini CLI",
+    "section": "4.2 Set the Location",
+    "text": "4.2 Set the Location\nYou also need to specify the Google Cloud location where your resources will be managed.\n\n\nCode\n# Set the Google Cloud location\nexport GOOGLE_CLOUD_LOCATION='us-central1'"
+  },
+  {
+    "objectID": "chattr.html#load-the-package",
+    "href": "chattr.html#load-the-package",
+    "title": "chattr: An RStudio/Positron Interface for LLMs",
+    "section": "3.1 Load the Package",
+    "text": "3.1 Load the Package\nOnce installed, load the chattr library into your R session.\n\n\nCode\n# Load the chattr library\nlibrary(chattr)"
+  },
+  {
+    "objectID": "chattr.html#set-up-the-chat-provider",
+    "href": "chattr.html#set-up-the-chat-provider",
+    "title": "chattr: An RStudio/Positron Interface for LLMs",
+    "section": "3.2 Set Up the Chat Provider",
+    "text": "3.2 Set Up the Chat Provider\nchattr works with various LLM providers. Here, we set up a chat provider using GitHub’s Copilot model through the ellmer package.\n\n\nCode\n# Set up the chat provider using GitHub Copilot (gpt-4o model)\n# Note: GitHub Copilot does not require a separate OpenAI API key.\nmy_chat &lt;- ellmer::chat_github(model = \"gpt-4o\")\nchattr_use(my_chat)"
+  },
+  {
+    "objectID": "chattr.html#using-the-chattr-app",
+    "href": "chattr.html#using-the-chattr-app",
+    "title": "chattr: An RStudio/Positron Interface for LLMs",
+    "section": "4.1 Using the chattr App",
+    "text": "4.1 Using the chattr App\nchattr includes a Shiny-based gadget for an interactive chat experience.\n\n\nCode\n# Launch the interactive chattr app\n# chattr_app()"
+  },
+  {
+    "objectID": "chattr.html#interacting-directly-in-code",
+    "href": "chattr.html#interacting-directly-in-code",
+    "title": "chattr: An RStudio/Positron Interface for LLMs",
+    "section": "4.2 Interacting Directly in Code",
+    "text": "4.2 Interacting Directly in Code\nYou can also send prompts to the LLM directly from your R code.\n\n\nCode\n# Send a prompt to the configured chat provider\nchattr(\"what is your name?\")"
+  },
+  {
+    "objectID": "chattr.html#view-history",
+    "href": "chattr.html#view-history",
+    "title": "chattr: An RStudio/Positron Interface for LLMs",
+    "section": "5.1 View History",
+    "text": "5.1 View History\n\n\nCode\n# Retrieve and print the chat history\nchattr_history &lt;- ch_history()\nprint(chattr_history)"
+  },
+  {
+    "objectID": "chattr.html#save-history",
+    "href": "chattr.html#save-history",
+    "title": "chattr: An RStudio/Positron Interface for LLMs",
+    "section": "5.2 Save History",
+    "text": "5.2 Save History\nYou can save your chat history to a file for later use.\n\n\nCode\n# Save the current chat history to an RDS file\nsaveRDS(ch_history(), \"chat_history.rds\")"
+  },
+  {
+    "objectID": "chattr.html#clear-history",
+    "href": "chattr.html#clear-history",
+    "title": "chattr: An RStudio/Positron Interface for LLMs",
+    "section": "5.3 Clear History",
+    "text": "5.3 Clear History\nTo start a new session, you can clear the current chat history.\n\n\nCode\n# Clear the chat history by passing an empty list\nprint(ch_history(list()))"
+  },
+  {
+    "objectID": "chattr.html#reload-history",
+    "href": "chattr.html#reload-history",
+    "title": "chattr: An RStudio/Positron Interface for LLMs",
+    "section": "5.4 Reload History",
+    "text": "5.4 Reload History\nYou can reload a previously saved chat history.\n\n\nCode\n# Load a saved chat history from an RDS file\nchattr_history &lt;- ch_history(readRDS(\"chat_history.rds\"))\nprint(chattr_history)"
+  },
+  {
+    "objectID": "mlx_lm python.html#load-the-model-and-tokenizer",
+    "href": "mlx_lm python.html#load-the-model-and-tokenizer",
+    "title": "Getting Started with mlx-lm for Python",
+    "section": "3.1 Load the Model and Tokenizer",
+    "text": "3.1 Load the Model and Tokenizer\nWe will use the load function from mlx_lm to download and load the model and its corresponding tokenizer. In this example, we are using a 4-bit quantized version of the Mistral-7B-Instruct-v0.3 model from the mlx-community Hugging Face organization.\n\n\nCode\nfrom mlx_lm import load, generate\n\n# Load the pre-trained model and tokenizer\nmodel, tokenizer = load(\"mlx-community/Mistral-7B-Instruct-v0.3-4bit\")"
+  },
+  {
+    "objectID": "mlx_lm python.html#generate-text",
+    "href": "mlx_lm python.html#generate-text",
+    "title": "Getting Started with mlx-lm for Python",
+    "section": "3.2 Generate Text",
+    "text": "3.2 Generate Text\nOnce the model and tokenizer are loaded, we can use the generate function to generate text based on a prompt.\n\n\nCode\n# Define the prompt\nprompt = \"Write a story about Einstein\"\n\n# Format the prompt using the chat template\nmessages = [{\"role\": \"user\", \"content\": prompt}]\nformatted_prompt = tokenizer.apply_chat_template(\n    messages, add_generation_prompt=True\n)\n\n# Generate the text\ntext = generate(model, tokenizer, prompt=formatted_prompt, verbose=True)\ntext"
+  },
+  {
+    "objectID": "ellmer.html#load-necessary-packages",
+    "href": "ellmer.html#load-necessary-packages",
+    "title": "ellmer: A Flexible LLM Framework for R",
+    "section": "3.1 Load Necessary Packages",
+    "text": "3.1 Load Necessary Packages\nLoad the ellmer and keyring packages into your R session. keyring is used for securely managing API keys.\n\n\nCode\n# Load the required libraries\nlibrary(ellmer)\nlibrary(keyring)"
+  },
+  {
+    "objectID": "ellmer.html#initialize-the-chat-model",
+    "href": "ellmer.html#initialize-the-chat-model",
+    "title": "ellmer: A Flexible LLM Framework for R",
+    "section": "4.1 Initialize the Chat Model",
+    "text": "4.1 Initialize the Chat Model\nFirst, create an instance of the Gemini chat model, providing your API key and specifying the model you want to use.\n\n\nCode\n# Set up the Google Gemini chat model\nchat_gemini_model &lt;- chat_google_gemini(\n  api_key = key_get(\"google_ai_api_key\"),\n  model = \"gemini-1.5-flash\"\n)\n\nchat_gemini_model"
+  },
+  {
+    "objectID": "ellmer.html#generate-text",
+    "href": "ellmer.html#generate-text",
+    "title": "ellmer: A Flexible LLM Framework for R",
+    "section": "4.2 Generate Text",
+    "text": "4.2 Generate Text\nOnce the model is initialized, you can start a chat and generate text.\n\n\nCode\n# Generate a response from the model\nresult &lt;- chat_gemini_model$chat(\"Tell me three jokes about statisticians\")\nresult"
+  },
+  {
+    "objectID": "ellmer.html#live-browser-mode",
+    "href": "ellmer.html#live-browser-mode",
+    "title": "ellmer: A Flexible LLM Framework for R",
+    "section": "5.1 Live Browser Mode",
+    "text": "5.1 Live Browser Mode\nYou can launch a web-based interface to chat with the model.\n\n\nCode\n# Open an interactive chat session in a web browser\nlive_browser(chat_gemini_model)"
+  },
+  {
+    "objectID": "ellmer.html#console-mode",
+    "href": "ellmer.html#console-mode",
+    "title": "ellmer: A Flexible LLM Framework for R",
+    "section": "5.2 Console Mode",
+    "text": "5.2 Console Mode\nAlternatively, you can chat with the model directly in the R console.\n\n\nCode\n# Start an interactive chat session in the console\nlive_console(chat_gemini_model)"
+  },
+  {
+    "objectID": "ellmer.html#using-a-system-prompt",
+    "href": "ellmer.html#using-a-system-prompt",
+    "title": "ellmer: A Flexible LLM Framework for R",
+    "section": "6.1 Using a System Prompt",
+    "text": "6.1 Using a System Prompt\nYou can provide a system prompt to guide the model’s behavior and tone.\n\n\nCode\n# Define a system prompt\nsystem_prompt &lt;- \"You are an IT expert\"\nsystem_prompt\n\n\n\n\nCode\n# Initialize the model with the system prompt\nchat_gemini_model_expert &lt;- chat_google_gemini(\n  system_prompt = system_prompt,\n  api_key = key_get(\"google_ai_api_key\"),\n  model = \"gemini-1.5-flash\"\n)\n\nchat_gemini_model_expert"
+  },
+  {
+    "objectID": "ellmer.html#vision-capabilities",
+    "href": "ellmer.html#vision-capabilities",
+    "title": "ellmer: A Flexible LLM Framework for R",
+    "section": "6.2 Vision Capabilities",
+    "text": "6.2 Vision Capabilities\nellmer also supports multi-modal models that can analyze images.\n\nFirst, upload the image file to the Google API.\n\n\nCode\n# Upload an image file\nfile &lt;- google_upload(\n  path = \"coffee.jpeg\",\n  api_key = key_get(\"google_ai_api_key\")\n)\n\n\nThen, you can ask the model to describe or analyze the image.\n\n\nCode\n# Ask the model to summarize the content of the image\nchat_gemini_model$chat(file, \"Give me a three-paragraph summary of this\")"
+  },
+  {
+    "objectID": "LLM.html",
+    "href": "LLM.html",
+    "title": "Fundamental AI Concepts",
     "section": "",
-    "text": "ellmer makes it easy to use large language models (LLM) from R. It supports a wide variety of LLM providers and implements a rich set of features including streaming outputs, tool/function calling, structured data extraction, and more.\n\n\n\nCode\n#install.packages(\"ellmer\")\n\n\n\n\nCode\nlibrary(ellmer)\nlibrary(keyring)\n\n\n\n1 Google gemini\n\n\nCode\nchat_gemini_model=chat_google_gemini(\n  system_prompt = NULL,\n  base_url = \"https://generativelanguage.googleapis.com/v1beta/\",\n  api_key = key_get(\"google_ai_api_key\"),\n  model = \"gemini-2.0-flash\",\n  api_args = list(),\n  echo = NULL\n)\n\nchat_gemini_model\n\n\n&lt;Chat Google/Gemini/gemini-2.0-flash turns=0 tokens=0/0 $0.00&gt;\n\n\n\n\nCode\nresult=chat_gemini_model$chat(\"Tell me three jokes about statisticians\")\n\n\nAlright, here are three jokes about statisticians:\n\n1.  **Why did the statistician break up with the mathematician?**\n    Because she said he was mean! (He only dealt with averages.)\n\n2.  **A statistician can have his head in an oven and his feet in ice, and he \nwill say that on average he feels fine.**\n\n3.  **A statistician walks into a bar and orders a beer. The bartender says, \n\"We don't serve statisticians here.\" The statistician replies, \"Oh, that's \nokay. I'll just move on to the next bar. Eventually I'll be served.\"**\n\n\nCode\nresult\n\n\n[1] \"Alright, here are three jokes about statisticians:\\n\\n1.  **Why did the statistician break up with the mathematician?**\\n    Because she said he was mean! (He only dealt with averages.)\\n\\n2.  **A statistician can have his head in an oven and his feet in ice, and he will say that on average he feels fine.**\\n\\n3.  **A statistician walks into a bar and orders a beer. The bartender says, \\\"We don't serve statisticians here.\\\" The statistician replies, \\\"Oh, that's okay. I'll just move on to the next bar. Eventually I'll be served.\\\"**\\n\"\n\n\n\n\n2 Interactive mode\n\n\nCode\n#live_browser(chat_gemini_model)\n\n\n\n\n3 console mode\n\n\nCode\n#live_console(chat_gemini_model)\n\n\n\n\n4 using system prompt\n\n\nCode\nsystem_prompt = \"You are a IT expert\"\nsystem_prompt\n\n\n[1] \"You are a IT expert\"\n\n\n\n\nCode\nchat_gemini_model=chat_google_gemini(\n  system_prompt = system_prompt,\n  base_url = \"https://generativelanguage.googleapis.com/v1beta/\",\n  api_key = key_get(\"google_ai_api_key\"),\n  model = \"gemini-2.0-flash\",\n  api_args = list(),\n  echo = NULL\n)\n\nchat_gemini_model\n\n\n&lt;Chat Google/Gemini/gemini-2.0-flash turns=1 tokens=0/0 $0.00&gt;\n── system [0] ──────────────────────────────────────────────────────────────────\nYou are a IT expert\n\n\n\n\n5 vision\n\n\n6 structured output\n\n\n7 tool calling\n\n\n8 reference\nhttps://ellmer.tidyverse.org/"
+    "text": "An AI agent is an autonomous entity that perceives its environment through sensors and acts upon that environment through actuators to achieve specific goals. In the context of large language models (LLMs), an agent can be designed to perform tasks, make decisions, and interact with users or other systems in a goal-oriented manner.\nKey characteristics of an AI agent include:\n\nAutonomy: The ability to operate without direct human intervention.\nReactivity: The ability to perceive and respond to changes in its environment.\nPro-activeness: The ability to take initiative to achieve its goals.\nGoal-orientation: The ability to act in a way that is directed towards achieving specific objectives."
+  },
+  {
+    "objectID": "LLM.html#how-rag-works",
+    "href": "LLM.html#how-rag-works",
+    "title": "Fundamental AI Concepts",
+    "section": "3.1 How RAG Works",
+    "text": "3.1 How RAG Works\nThe RAG process typically involves two main steps:\n\nRetrieval: When a user provides a prompt, the system first retrieves relevant information from a knowledge base, such as a collection of documents or a database. This is done using a retrieval model, which is often based on techniques like vector search.\nGeneration: The retrieved information is then combined with the original prompt and fed into the LLM. The model uses this augmented context to generate a more accurate, up-to-date, and contextually relevant response.\n\nBy grounding the LLM’s responses in verifiable information, RAG helps to reduce hallucinations and improve the overall quality and reliability of the generated content."
+  },
+  {
+    "objectID": "LLM.html#benefits-of-rag",
+    "href": "LLM.html#benefits-of-rag",
+    "title": "Fundamental AI Concepts",
+    "section": "3.2 Benefits of RAG",
+    "text": "3.2 Benefits of RAG\n\nImproved Accuracy: Responses are based on factual information from a trusted knowledge source.\nEnhanced Relevance: The generated content is more specific and relevant to the user’s query.\nReduced Hallucinations: The model is less likely to generate false or misleading information.\nGreater Transparency: It is often possible to trace the generated response back to the source documents, providing a degree of explainability."
+  },
+  {
+    "objectID": "LLM.html#references",
+    "href": "LLM.html#references",
+    "title": "Fundamental AI Concepts",
+    "section": "3.3 References",
+    "text": "3.3 References\n\nWhat is RAG (Retrieval-Augmented Generation)?\nRetrieval Augmented Generation (RAG) Explained\nWhat is Retrieval-Augmented Generation?"
   }
 ]
