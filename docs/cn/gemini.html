@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="cn" xml:lang="cn">
 <head>
-<link rel="alternate" hreflang="en" href="/gemini.html" />
-<link rel="alternate" hreflang="cn" href="/cn/gemini.cn.html" />
+<link rel="alternate" hreflang="en" href="https://jcfly3000.github.io/into_AI/gemini.html" />
+<link rel="alternate" hreflang="cn" href="https://jcfly3000.github.io/into_AI/cn/gemini.cn.html" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-99.9.9">
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item"><div class="dropdown" id="languages-links-parent">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> 中文</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="/gemini.html" id="language-link-en">EN</a></li></ul>
+<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> 中文</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://jcfly3000.github.io/into_AI/gemini.html" id="language-link-en">EN</a></li></ul>
 </div></li>
 <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
@@ -217,7 +217,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section><section id="先决条件安装-node.js" class="level1" data-number="2"><h1 data-number="2">
 <span class="header-section-number">2</span> 先决条件：安装 Node.js</h1>
 <p>Gemini CLI 作为一个 npm 包分发，因此你需要在系统中安装 Node.js 和 npm。推荐的安装方式是使用 Node 版本管理器（nvm）。</p>
-<div id="e7e1c879" class="cell" data-execution_count="1">
+<div id="24b7b31c" class="cell" data-execution_count="1">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 下载并安装 nvm</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>curl <span class="op">-</span>o<span class="op">-</span> https:<span class="op">//</span>raw.githubusercontent.com<span class="op">/</span>nvm<span class="op">-</span>sh<span class="op">/</span>nvm<span class="op">/</span>v0<span class="fl">.39.3</span><span class="op">/</span>install.sh <span class="op">|</span> bash</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -235,7 +235,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section><section id="安装-gemini-cli" class="level1" data-number="3"><h1 data-number="3">
 <span class="header-section-number">3</span> 安装 Gemini CLI</h1>
 <p>当你准备好 Node.js 和 npm 后，可以在系统中全局安装 Gemini CLI。</p>
-<div id="16fe5834" class="cell" data-execution_count="2">
+<div id="443b30ea" class="cell" data-execution_count="2">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 安装 Gemini CLI 包</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>npm install <span class="op">-</span>g <span class="op">@</span>google<span class="op">/</span>gemini<span class="op">-</span>cli</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -243,7 +243,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="升级-gemini-cli" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="升级-gemini-cli">
 <span class="header-section-number">3.1</span> 升级 Gemini CLI</h2>
 <p>为了确保拥有最新的功能和错误修复，可以不时地升级此包。</p>
-<div id="a8597912" class="cell" data-execution_count="3">
+<div id="22f71c1e" class="cell" data-execution_count="3">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 将 Gemini CLI 升级到最新版本</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>npm upgrade <span class="op">-</span>g <span class="op">@</span>google<span class="op">/</span>gemini<span class="op">-</span>cli</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -256,7 +256,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>你可以使用 Google Cloud 账户或 API 密钥登录。</p>
 <section id="选项一使用-google-cloud-账户登录" class="level3" data-number="4.1.1"><h3 data-number="4.1.1" class="anchored" data-anchor-id="选项一使用-google-cloud-账户登录">
 <span class="header-section-number">4.1.1</span> 选项一：使用 Google Cloud 账户登录</h3>
-<div id="10864003" class="cell" data-execution_count="4">
+<div id="aecf342a" class="cell" data-execution_count="4">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 设置你的 Google Cloud 项目 ID</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>export GOOGLE_CLOUD_PROJECT<span class="op">=</span><span class="st">"your-google-cloud-project-id"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -264,13 +264,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>或者将 GOOGLE_CLOUD_PROJECT 保存为环境变量，这样每次就不需要重新输入。</p>
 <section id="检查你使用的是-zsh-还是-bash" class="level4" data-number="4.1.1.1"><h4 data-number="4.1.1.1" class="anchored" data-anchor-id="检查你使用的是-zsh-还是-bash">
 <span class="header-section-number">4.1.1.1</span> 检查你使用的是 zsh 还是 bash</h4>
-<div id="85f89736" class="cell" data-execution_count="5">
+<div id="6e410231" class="cell" data-execution_count="5">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>echo $SHELL</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section><section id="如果是-zsh" class="level4" data-number="4.1.1.2"><h4 data-number="4.1.1.2" class="anchored" data-anchor-id="如果是-zsh">
 <span class="header-section-number">4.1.1.2</span> 如果是 zsh：</h4>
-<div id="c7c843f4" class="cell" data-execution_count="6">
+<div id="de5a9537" class="cell" data-execution_count="6">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>echo <span class="st">'export GOOGLE_CLOUD_PROJECT="your-google-cloud-project-id"'</span> <span class="op">&gt;&gt;</span> <span class="op">~/</span>.zshrc</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>source <span class="op">~/</span>.zshrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -278,7 +278,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section><section id="如果是-bash" class="level4" data-number="4.1.1.3"><h4 data-number="4.1.1.3" class="anchored" data-anchor-id="如果是-bash">
 <span class="header-section-number">4.1.1.3</span> 如果是 bash：</h4>
-<div id="83b80c63" class="cell" data-execution_count="7">
+<div id="fc388ffb" class="cell" data-execution_count="7">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>echo <span class="st">'export GOOGLE_CLOUD_PROJECT="your-google-cloud-project-id"'</span> <span class="op">&gt;&gt;</span> <span class="op">~/</span>.bashrc</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>source <span class="op">~/</span>.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -286,14 +286,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section><section id="检查是否成功添加" class="level4" data-number="4.1.1.4"><h4 data-number="4.1.1.4" class="anchored" data-anchor-id="检查是否成功添加">
 <span class="header-section-number">4.1.1.4</span> 检查是否成功添加：</h4>
-<div id="5cfab8d5" class="cell" data-execution_count="8">
+<div id="d223d66f" class="cell" data-execution_count="8">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>echo $GOOGLE_CLOUD_PROJECT</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section></section><section id="选项二使用-api-密钥登录" class="level3" data-number="4.1.2"><h3 data-number="4.1.2" class="anchored" data-anchor-id="选项二使用-api-密钥登录">
 <span class="header-section-number">4.1.2</span> 选项二：使用 API 密钥登录</h3>
 <p>另外，你也可以使用 API 密钥进行身份验证。</p>
-<div id="f069d0b1" class="cell" data-execution_count="9">
+<div id="628b7c6b" class="cell" data-execution_count="9">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 将你的 Gemini API 密钥设置为环境变量</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>export GEMINI_API_KEY<span class="op">=</span><span class="st">"your-gemini-api-key"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -301,7 +301,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section></section><section id="设置位置" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="设置位置">
 <span class="header-section-number">4.2</span> 设置位置</h2>
 <p>你还需要指定 Google Cloud 中资源将被管理的地理位置。</p>
-<div id="a7e3d68f" class="cell" data-execution_count="10">
+<div id="a8e5e5dc" class="cell" data-execution_count="10">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 设置 Google Cloud 位置</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>export GOOGLE_CLOUD_LOCATION<span class="op">=</span><span class="st">'us-central1'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -309,7 +309,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section></section><section id="运行-gemini-cli" class="level1" data-number="5"><h1 data-number="5">
 <span class="header-section-number">5</span> 运行 Gemini CLI</h1>
 <p>配置完成后，你可以运行 Gemini CLI 开始与模型交互。</p>
-<div id="fd32779c" class="cell" data-execution_count="11">
+<div id="cbf74ab2" class="cell" data-execution_count="11">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># 运行 Gemini CLI</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>gemini</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
