@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<link rel="alternate" hreflang="en" href="/mlx_lm python.html" />
-<link rel="alternate" hreflang="cn" href="/cn/mlx_lm python.cn.html" />
+<link rel="alternate" hreflang="en" href="https://jcfly3000.github.io/into_AI/mlx_lm python.html" />
+<link rel="alternate" hreflang="cn" href="https://jcfly3000.github.io/into_AI/cn/mlx_lm python.cn.html" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-99.9.9">
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item"><div class="dropdown" id="languages-links-parent">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> EN</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="/cn/mlx_lm%20python.html" id="language-link-cn">中文</a></li></ul>
+<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> EN</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://jcfly3000.github.io/into_AI/cn/mlx_lm%20python.html" id="language-link-cn">中文</a></li></ul>
 </div></li>
 <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
@@ -204,18 +204,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section><section id="environment-setup" class="level1" data-number="2"><h1 data-number="2">
 <span class="header-section-number">2</span> Environment Setup</h1>
 <p>We will use <code>uv</code> to create a virtual environment and manage our dependencies.</p>
-<div id="f282cbfb" class="cell" data-execution_count="1">
+<div id="93483f57" class="cell" data-execution_count="1">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialize a new virtual environment</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>uv init</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="654312f0" class="cell" data-execution_count="2">
+<div id="5701d171" class="cell" data-execution_count="2">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the required packages</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>uv add mlx<span class="op">-</span>lm nbclient nbformat</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Let’s verify the Python version we are using.</p>
-<div id="ea7041d6" class="cell" data-execution_count="3">
+<div id="2b4a8a50" class="cell" data-execution_count="3">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(sys.version)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -226,7 +226,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="load-the-model-and-tokenizer" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="load-the-model-and-tokenizer">
 <span class="header-section-number">3.1</span> Load the Model and Tokenizer</h2>
 <p>We will use the <code>load</code> function from <code>mlx_lm</code> to download and load the model and its corresponding tokenizer. In this example, we are using a 4-bit quantized version of the Mistral-7B-Instruct-v0.3 model from the <code>mlx-community</code> Hugging Face organization.</p>
-<div id="e253eaef" class="cell" data-execution_count="4">
+<div id="47e2a471" class="cell" data-execution_count="4">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mlx_lm <span class="im">import</span> load, generate</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Load the pre-trained model and tokenizer</span></span>
@@ -236,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section><section id="generate-text" class="level2" data-number="3.2"><h2 data-number="3.2" class="anchored" data-anchor-id="generate-text">
 <span class="header-section-number">3.2</span> Generate Text</h2>
 <p>Once the model and tokenizer are loaded, we can use the <code>generate</code> function to generate text based on a prompt.</p>
-<div id="9d93a78d" class="cell" data-execution_count="5">
+<div id="f13b6279" class="cell" data-execution_count="5">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Define the prompt</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>prompt <span class="op">=</span> <span class="st">"Write a story about Einstein"</span></span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
