@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<link rel="alternate" hreflang="en" href="https://jcfly3000.github.io/into_AI/gemini.html" />
-<link rel="alternate" hreflang="cn" href="https://jcfly3000.github.io/into_AI/cn/gemini.cn.html" />
+<link rel="alternate" hreflang="en" href="/gemini.html" />
+<link rel="alternate" hreflang="cn" href="/cn/gemini.cn.html" />
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta charset="utf-8">
 <meta name="generator" content="quarto-99.9.9">
@@ -109,7 +109,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
 <li class="nav-item"><div class="dropdown" id="languages-links-parent">
-<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> EN</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="https://jcfly3000.github.io/into_AI/cn/gemini.html" id="language-link-cn">中文</a></li></ul>
+<button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" id="languages-button"><i class="bi bi-globe2"></i> EN</button><ul class="dropdown-menu" id="languages-links"><li><a class="dropdown-item" href="/cn/gemini.html" id="language-link-cn">中文</a></li></ul>
 </div></li>
 <li class="nav-item">
     <a class="nav-link" href="./index.html"> 
@@ -218,7 +218,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section><section id="prerequisites-node.js-installation" class="level1" data-number="2"><h1 data-number="2">
 <span class="header-section-number">2</span> Prerequisites: Node.js Installation</h1>
 <p>The Gemini CLI is distributed as an npm package, so you need to have Node.js and npm installed on your system. The recommended way to install Node.js is by using the Node Version Manager (nvm).</p>
-<div id="9707741e" class="cell" data-execution_count="1">
+<div id="bd1d7b00" class="cell" data-execution_count="1">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Download and install nvm</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>curl <span class="op">-</span>o<span class="op">-</span> https:<span class="op">//</span>raw.githubusercontent.com<span class="op">/</span>nvm<span class="op">-</span>sh<span class="op">/</span>nvm<span class="op">/</span>v0<span class="fl">.39.3</span><span class="op">/</span>install.sh <span class="op">|</span> bash</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -236,7 +236,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section><section id="installing-the-gemini-cli" class="level1" data-number="3"><h1 data-number="3">
 <span class="header-section-number">3</span> Installing the Gemini CLI</h1>
 <p>Once you have Node.js and npm ready, you can install the Gemini CLI globally on your system.</p>
-<div id="37fe8234" class="cell" data-execution_count="2">
+<div id="947337c7" class="cell" data-execution_count="2">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install the Gemini CLI package</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>npm install <span class="op">-</span>g <span class="op">@</span>google<span class="op">/</span>gemini<span class="op">-</span>cli</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -244,7 +244,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="upgrading-the-gemini-cli" class="level2" data-number="3.1"><h2 data-number="3.1" class="anchored" data-anchor-id="upgrading-the-gemini-cli">
 <span class="header-section-number">3.1</span> Upgrading the Gemini CLI</h2>
 <p>To ensure you have the latest features and bug fixes, you can upgrade the package from time to time.</p>
-<div id="82e272b6" class="cell" data-execution_count="3">
+<div id="f745c12b" class="cell" data-execution_count="3">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Upgrade the Gemini CLI to the latest version</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>npm upgrade <span class="op">-</span>g <span class="op">@</span>google<span class="op">/</span>gemini<span class="op">-</span>cli</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -257,7 +257,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>You can either log in with your Google Cloud account or use an API key.</p>
 <section id="option-1-login-with-google-cloud-account" class="level3" data-number="4.1.1"><h3 data-number="4.1.1" class="anchored" data-anchor-id="option-1-login-with-google-cloud-account">
 <span class="header-section-number">4.1.1</span> Option 1: Login with Google Cloud Account</h3>
-<div id="c2cdf752" class="cell" data-execution_count="4">
+<div id="1b07970b" class="cell" data-execution_count="4">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your Google Cloud project ID</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>export GOOGLE_CLOUD_PROJECT<span class="op">=</span><span class="st">"your-google-cloud-project-id"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -265,13 +265,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>or save the GOOGLE_CLOUD_PROJECT into environment variable.So that do not need to re enter everytime</p>
 <section id="check-using-zsh-or-bash" class="level4" data-number="4.1.1.1"><h4 data-number="4.1.1.1" class="anchored" data-anchor-id="check-using-zsh-or-bash">
 <span class="header-section-number">4.1.1.1</span> check using zsh or bash</h4>
-<div id="7bc7bf95" class="cell" data-execution_count="5">
+<div id="4e3c5d57" class="cell" data-execution_count="5">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>echo $SHELL</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section><section id="for-zsh" class="level4" data-number="4.1.1.2"><h4 data-number="4.1.1.2" class="anchored" data-anchor-id="for-zsh">
 <span class="header-section-number">4.1.1.2</span> for zsh</h4>
-<div id="39854d02" class="cell" data-execution_count="6">
+<div id="73a474c7" class="cell" data-execution_count="6">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>echo <span class="st">'export GOOGLE_CLOUD_PROJECT="your-google-cloud-project-id"'</span> <span class="op">&gt;&gt;</span> <span class="op">~/</span>.zshrc</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>source <span class="op">~/</span>.zshrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -279,7 +279,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section><section id="for-bash" class="level4" data-number="4.1.1.3"><h4 data-number="4.1.1.3" class="anchored" data-anchor-id="for-bash">
 <span class="header-section-number">4.1.1.3</span> for bash</h4>
-<div id="ac68d79e" class="cell" data-execution_count="7">
+<div id="84c1d513" class="cell" data-execution_count="7">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>echo <span class="st">'export GOOGLE_CLOUD_PROJECT="your-google-cloud-project-id"'</span> <span class="op">&gt;&gt;</span> <span class="op">~/</span>.bashrc</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>source <span class="op">~/</span>.bashrc</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -287,14 +287,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </section><section id="check-wheather-added-or-not" class="level4" data-number="4.1.1.4"><h4 data-number="4.1.1.4" class="anchored" data-anchor-id="check-wheather-added-or-not">
 <span class="header-section-number">4.1.1.4</span> check wheather added or not</h4>
-<div id="ef373d42" class="cell" data-execution_count="8">
+<div id="74b69287" class="cell" data-execution_count="8">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>echo $GOOGLE_CLOUD_PROJECT</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section></section><section id="option-2-login-with-api-key" class="level3" data-number="4.1.2"><h3 data-number="4.1.2" class="anchored" data-anchor-id="option-2-login-with-api-key">
 <span class="header-section-number">4.1.2</span> Option 2: Login with API Key</h3>
 <p>Alternatively, you can use an API key for authentication.</p>
-<div id="34c7bb28" class="cell" data-execution_count="9">
+<div id="d623801f" class="cell" data-execution_count="9">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set your Gemini API key as an environment variable</span></span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>export GEMINI_API_KEY<span class="op">=</span><span class="st">"your-gemini-api-key"</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -302,7 +302,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section></section><section id="set-the-location" class="level2" data-number="4.2"><h2 data-number="4.2" class="anchored" data-anchor-id="set-the-location">
 <span class="header-section-number">4.2</span> Set the Location</h2>
 <p>You also need to specify the Google Cloud location where your resources will be managed.</p>
-<div id="ec1aef28" class="cell" data-execution_count="10">
+<div id="18fb6f7f" class="cell" data-execution_count="10">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Set the Google Cloud location</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>export GOOGLE_CLOUD_LOCATION<span class="op">=</span><span class="st">'us-central1'</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -310,14 +310,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section></section><section id="running-the-gemini-cli" class="level1" data-number="5"><h1 data-number="5">
 <span class="header-section-number">5</span> Running the Gemini CLI</h1>
 <p>Once everything is set up, you can run the Gemini CLI to start interacting with the models.</p>
-<div id="a2e1f01d" class="cell" data-execution_count="11">
+<div id="1bd464a9" class="cell" data-execution_count="11">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the Gemini CLI</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>gemini</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 </section><section id="running-the-gemini-cli-with-agreement-to-all-access" class="level1" data-number="6"><h1 data-number="6">
 <span class="header-section-number">6</span> Running the Gemini CLI with agreement to all access</h1>
-<div id="dff6fb8c" class="cell" data-execution_count="12">
+<div id="a3d8831a" class="cell" data-execution_count="12">
 <details open="" class="code-fold"><summary>Code</summary><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Run the Gemini CLI</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>gemini <span class="op">--</span>yolo</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
