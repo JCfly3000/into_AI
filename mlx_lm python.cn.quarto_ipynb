@@ -1,0 +1,167 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Python mlx-lm 入门指南\"\n",
+        "\n",
+        "execute:\n",
+        "  warning: false\n",
+        "  error: false\n",
+        "  eval: false\n",
+        "  \n",
+        "format:\n",
+        "  html:\n",
+        "    toc: true\n",
+        "    toc-location: right\n",
+        "    code-fold: show\n",
+        "    code-tools: true\n",
+        "    number-sections: true\n",
+        "    code-block-bg: true\n",
+        "    code-block-border-left: \"#31BAE9\"\n",
+        "---\n",
+        "\n",
+        "![](images/clipboard-2481905032.png)\n",
+        "\n",
+        "# mlx-lm 简介\n",
+        "\n",
+        "`mlx-lm` 是一个功能强大的 Python 库，专为在 Apple 芯片上运行和微调大型语言模型（LLM）而设计。 它构建于 Apple 的 MLX 框架之上，该框架专为在 Apple 硬件上实现高性能机器学习而优化。 `mlx-lm` 可以让您轻松下载、运行和自定义各种大型语言模型。\n",
+        "\n",
+        "本指南将引导您完成环境设置、必要软件包安装以及运行预训练模型的过程。\n",
+        "\n",
+        "# 环境设置\n",
+        "\n",
+        "我们将使用 `uv` 来创建虚拟环境并管理我们的依赖项。"
+      ],
+      "id": "ff378d08"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "# 初始化一个新的虚拟环境\n",
+        "uv init"
+      ],
+      "id": "648bf334",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "# 安装所需的软件包\n",
+        "uv add mlx-lm nbclient nbformat"
+      ],
+      "id": "acdd01ea",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "让我们验证一下我们正在使用的 Python 版本。"
+      ],
+      "id": "b1a66725"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import sys\n",
+        "print(sys.version)"
+      ],
+      "id": "859c597c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# 运行预训练模型\n",
+        "\n",
+        "现在我们的环境已经设置好，我们可以下载并运行一个预训练的 LLM。\n",
+        "\n",
+        "## 加载模型和分词器\n",
+        "\n",
+        "我们将使用 `mlx_lm` 中的 `load` 函数来下载并加载模型及其对应的分词器。在本例中，我们使用的是来自 `mlx-community` Hugging Face 组织的 Mistral-7B-Instruct-v0.3 模型的 4 位量化版本。"
+      ],
+      "id": "5b7280e0"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from mlx_lm import load, generate\n",
+        "\n",
+        "# 加载预训练模型和分词器\n",
+        "model, tokenizer = load(\"mlx-community/Mistral-7B-Instruct-v0.3-4bit\")"
+      ],
+      "id": "a7ee723f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## 生成文本\n",
+        "\n",
+        "模型和分词器加载后，我们可以使用 `generate` 函数根据提示生成文本。"
+      ],
+      "id": "19147187"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# 定义提示\n",
+        "prompt = \"写一个关于爱因斯坦的故事\"\n",
+        "\n",
+        "# 使用聊天模板格式化提示\n",
+        "messages = [{\"role\": \"user\", \"content\": prompt}]\n",
+        "formatted_prompt = tokenizer.apply_chat_template(\n",
+        "    messages, add_generation_prompt=True\n",
+        ")\n",
+        "\n",
+        "# 生成文本\n",
+        "text = generate(model, tokenizer, prompt=formatted_prompt, verbose=True)\n",
+        "text"
+      ],
+      "id": "646bd896",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# 结论\n",
+        "\n",
+        "`mlx-lm` 提供了一种在 Apple 芯片上使用大型语言模型的简单高效的方法。 它与 MLX 框架的集成确保了最佳性能，使其成为希望在 Apple 设备上利用 LLM 强大功能的开发人员和研究人员的绝佳选择。\n",
+        "\n",
+        "# 参考资料\n",
+        "\n",
+        "-   [mlx-lm on GitHub](https://github.com/ml-explore/mlx-lm)\n",
+        "-   [mlx-vlm on GitHub](https://github.com/Blaizzy/mlx-vlm)"
+      ],
+      "id": "e9a36c6b"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Library/Frameworks/Python.framework/Versions/3.13/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

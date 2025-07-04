@@ -1,0 +1,297 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"开始使用 Gemini CLI\"\n",
+        "\n",
+        "execute:\n",
+        "  warning: false\n",
+        "  error: false\n",
+        "  eval: false\n",
+        "\n",
+        "format:\n",
+        "  html:\n",
+        "    toc: true\n",
+        "    toc-location: right\n",
+        "    code-fold: show\n",
+        "    code-tools: true\n",
+        "    number-sections: true\n",
+        "    code-block-bg: true\n",
+        "    code-block-border-left: \"#31BAE9\"\n",
+        "---\n",
+        "\n",
+        "![](images/clipboard-4089562798.png)\n",
+        "\n",
+        "# Gemini CLI 简介\n",
+        "\n",
+        "Gemini CLI 是一个命令行界面工具，允许你直接从终端与 Google 的 Gemini 模型进行交互。它提供了一种便捷的方式来试验 Gemini、测试提示词，并构建利用大型语言模型能力的强大 Shell 脚本。\n",
+        "\n",
+        "本指南将引导你完成安装和配置 Gemini CLI 的过程。\n",
+        "\n",
+        "# 先决条件：安装 Node.js\n",
+        "\n",
+        "Gemini CLI 作为一个 npm 包分发，因此你需要在系统中安装 Node.js 和 npm。推荐的安装方式是使用 Node 版本管理器（nvm）。"
+      ],
+      "id": "47624332"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# 下载并安装 nvm\n",
+        "curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash\n",
+        "\n",
+        "# 为当前 shell 会话激活 nvm\n",
+        "source ~/.nvm/nvm.sh\n",
+        "\n",
+        "# 安装最新的稳定版本 Node.js\n",
+        "nvm install 20\n",
+        "\n",
+        "# 验证安装是否成功\n",
+        "node -v\n",
+        "npm -v"
+      ],
+      "id": "4dc825e4",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# 安装 Gemini CLI\n",
+        "\n",
+        "当你准备好 Node.js 和 npm 后，可以在系统中全局安装 Gemini CLI。"
+      ],
+      "id": "3884b632"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# 安装 Gemini CLI 包\n",
+        "npm install -g @google/gemini-cli"
+      ],
+      "id": "456d4814",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## 升级 Gemini CLI\n",
+        "\n",
+        "为了确保拥有最新的功能和错误修复，可以不时地升级此包。"
+      ],
+      "id": "fc119ae4"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# 将 Gemini CLI 升级到最新版本\n",
+        "npm upgrade -g @google/gemini-cli"
+      ],
+      "id": "ba609559",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# 配置\n",
+        "\n",
+        "使用 Gemini CLI 前，你需要使用 Google 账户进行身份验证并配置项目。\n",
+        "\n",
+        "## 使用 Google 账户登录\n",
+        "\n",
+        "你可以使用 Google Cloud 账户或 API 密钥登录。\n",
+        "\n",
+        "### 选项一：使用 Google Cloud 账户登录"
+      ],
+      "id": "a3ec53fb"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# 设置你的 Google Cloud 项目 ID\n",
+        "export GOOGLE_CLOUD_PROJECT=\"your-google-cloud-project-id\""
+      ],
+      "id": "b467c382",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "或者将 GOOGLE_CLOUD_PROJECT 保存为环境变量，这样每次就不需要重新输入。\n",
+        "\n",
+        "#### 检查你使用的是 zsh 还是 bash"
+      ],
+      "id": "67857934"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "echo $SHELL"
+      ],
+      "id": "d277e9ed",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### 如果是 zsh："
+      ],
+      "id": "2482ef00"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "echo 'export GOOGLE_CLOUD_PROJECT=\"your-google-cloud-project-id\"' >> ~/.zshrc\n",
+        "\n",
+        "source ~/.zshrc"
+      ],
+      "id": "51d42469",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### 如果是 bash："
+      ],
+      "id": "df2998d0"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "echo 'export GOOGLE_CLOUD_PROJECT=\"your-google-cloud-project-id\"' >> ~/.bashrc\n",
+        "\n",
+        "source ~/.bashrc"
+      ],
+      "id": "1ec6863d",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "#### 检查是否成功添加："
+      ],
+      "id": "1d538b17"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "echo $GOOGLE_CLOUD_PROJECT"
+      ],
+      "id": "dbad6c86",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "### 选项二：使用 API 密钥登录\n",
+        "\n",
+        "另外，你也可以使用 API 密钥进行身份验证。"
+      ],
+      "id": "f35b3b89"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# 将你的 Gemini API 密钥设置为环境变量\n",
+        "export GEMINI_API_KEY=\"your-gemini-api-key\""
+      ],
+      "id": "4b3bfe1c",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## 设置位置\n",
+        "\n",
+        "你还需要指定 Google Cloud 中资源将被管理的地理位置。"
+      ],
+      "id": "07eb7da7"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# 设置 Google Cloud 位置\n",
+        "export GOOGLE_CLOUD_LOCATION='us-central1'"
+      ],
+      "id": "f52b94fc",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# 运行 Gemini CLI\n",
+        "\n",
+        "配置完成后，你可以运行 Gemini CLI 开始与模型交互。"
+      ],
+      "id": "0e2f6a3b"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# 运行 Gemini CLI\n",
+        "gemini"
+      ],
+      "id": "5865aff7",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# 结语\n",
+        "\n",
+        "Gemini CLI 是一个强大的工具，适用于希望从命令行探索 Google Gemini 模型能力的开发者和技术爱好者。通过简单的安装和配置流程，你可以迅速在日常工作中利用生成式 AI 的强大能力。\n",
+        "\n",
+        "# 参考资料\n",
+        "\n",
+        "-   [GitHub 上的 Gemini CLI](https://github.com/google-gemini/gemini-cli)\n",
+        "-   [Node.js 下载页面](https://nodejs.org/en/download)"
+      ],
+      "id": "04580bd4"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Library/Frameworks/Python.framework/Versions/3.13/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}

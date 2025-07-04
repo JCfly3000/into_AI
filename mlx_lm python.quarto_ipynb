@@ -1,0 +1,167 @@
+{
+  "cells": [
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "---\n",
+        "title: \"Getting Started with mlx-lm for Python\"\n",
+        "\n",
+        "execute:\n",
+        "  warning: false\n",
+        "  error: false\n",
+        "  eval: false\n",
+        "  \n",
+        "format:\n",
+        "  html:\n",
+        "    toc: true\n",
+        "    toc-location: right\n",
+        "    code-fold: show\n",
+        "    code-tools: true\n",
+        "    number-sections: true\n",
+        "    code-block-bg: true\n",
+        "    code-block-border-left: \"#31BAE9\"\n",
+        "---\n",
+        "\n",
+        "![](images/clipboard-2481905032.png)\n",
+        "\n",
+        "# Introduction to mlx-lm\n",
+        "\n",
+        "`mlx-lm` is a powerful Python library designed for running and fine-tuning large language models (LLMs) on Apple silicon. It is built on top of Apple's MLX framework, which is optimized for high-performance machine learning on Apple hardware. `mlx-lm` makes it easy to download, run, and customize a wide range of LLMs.\n",
+        "\n",
+        "This guide will walk you through the process of setting up your environment, installing the necessary packages, and running a pre-trained model.\n",
+        "\n",
+        "# Environment Setup\n",
+        "\n",
+        "We will use `uv` to create a virtual environment and manage our dependencies."
+      ],
+      "id": "8d68d15d"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "# Initialize a new virtual environment\n",
+        "uv init"
+      ],
+      "id": "2d2c801f",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "#| eval: false\n",
+        "# Install the required packages\n",
+        "uv add mlx-lm nbclient nbformat"
+      ],
+      "id": "769953d6",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "Let's verify the Python version we are using."
+      ],
+      "id": "0950a4d1"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "import sys\n",
+        "print(sys.version)"
+      ],
+      "id": "9c4954bf",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Running a Pre-trained Model\n",
+        "\n",
+        "Now that our environment is set up, we can download and run a pre-trained LLM.\n",
+        "\n",
+        "## Load the Model and Tokenizer\n",
+        "\n",
+        "We will use the `load` function from `mlx_lm` to download and load the model and its corresponding tokenizer. In this example, we are using a 4-bit quantized version of the Mistral-7B-Instruct-v0.3 model from the `mlx-community` Hugging Face organization."
+      ],
+      "id": "a56820ad"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "from mlx_lm import load, generate\n",
+        "\n",
+        "# Load the pre-trained model and tokenizer\n",
+        "model, tokenizer = load(\"mlx-community/Mistral-7B-Instruct-v0.3-4bit\")"
+      ],
+      "id": "228183f0",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "## Generate Text\n",
+        "\n",
+        "Once the model and tokenizer are loaded, we can use the `generate` function to generate text based on a prompt."
+      ],
+      "id": "0c1fa067"
+    },
+    {
+      "cell_type": "code",
+      "metadata": {},
+      "source": [
+        "# Define the prompt\n",
+        "prompt = \"Write a story about Einstein\"\n",
+        "\n",
+        "# Format the prompt using the chat template\n",
+        "messages = [{\"role\": \"user\", \"content\": prompt}]\n",
+        "formatted_prompt = tokenizer.apply_chat_template(\n",
+        "    messages, add_generation_prompt=True\n",
+        ")\n",
+        "\n",
+        "# Generate the text\n",
+        "text = generate(model, tokenizer, prompt=formatted_prompt, verbose=True)\n",
+        "text"
+      ],
+      "id": "41f51487",
+      "execution_count": null,
+      "outputs": []
+    },
+    {
+      "cell_type": "markdown",
+      "metadata": {},
+      "source": [
+        "# Conclusion\n",
+        "\n",
+        "`mlx-lm` provides a simple and efficient way to work with large language models on Apple silicon. Its integration with the MLX framework ensures optimal performance, making it an excellent choice for developers and researchers who want to leverage the power of LLMs on their Apple devices.\n",
+        "\n",
+        "# References\n",
+        "\n",
+        "-   [mlx-lm on GitHub](https://github.com/ml-explore/mlx-lm)\n",
+        "-   [mlx-vlm on GitHub](https://github.com/Blaizzy/mlx-vlm)"
+      ],
+      "id": "a87a51f5"
+    }
+  ],
+  "metadata": {
+    "kernelspec": {
+      "name": "python3",
+      "language": "python",
+      "display_name": "Python 3 (ipykernel)",
+      "path": "/Library/Frameworks/Python.framework/Versions/3.13/share/jupyter/kernels/python3"
+    }
+  },
+  "nbformat": 4,
+  "nbformat_minor": 5
+}
