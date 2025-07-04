@@ -228,7 +228,7 @@
     "href": "ellmer.html#using-a-system-prompt",
     "title": "ellmer: A Flexible LLM Framework for R",
     "section": "6.1 Using a System Prompt",
-    "text": "6.1 Using a System Prompt\nYou can provide a system prompt to guide the model’s behavior and tone.\n\n\nCode\n# Define a system prompt\nsystem_prompt &lt;- \"You are an IT expert\"\nsystem_prompt\n\n\n\n\nCode\n# Initialize the model with the system prompt\nchat_gemini_model_expert &lt;- chat_google_gemini(\n  system_prompt = system_prompt,\n  api_key = key_get(\"google_ai_api_key\"),\n  model = \"gemini-1.5-flash\"\n)\n\nchat_gemini_model_expert"
+    "text": "6.1 Using a System Prompt\nYou can provide a system prompt to guide the model’s behavior and tone.\n\n\nCode\n# Define a system prompt\nsystem_prompt &lt;- \"You are an IT expert\"\nsystem_prompt\n\n\n\n\nCode\n# Initialize the model with the system prompt\nchat_gemini_model_expert &lt;- chat_google_gemini(\n  system_prompt = system_prompt,\n  api_key = key_get(\"google_ai_api_key\"),\n  model = \"gemini-2.5-flash\"\n)\n\nchat_gemini_model_expert"
   },
   {
     "objectID": "ellmer.html#vision-capabilities",

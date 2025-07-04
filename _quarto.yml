@@ -32,8 +32,8 @@ website:
         text: mlx_lm    
       
     right:
-      - text: "中文"
-        href: https://www.bing.com
+      - icon: github
+        href: https://github.com/JCfly3000/into_AI
 
   page-footer:
     right: "This blog is built with ❤️ and [Quarto](https://quarto.org/)."
